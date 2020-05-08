@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D3950EDD4C17FDEF3460C2F /* Pods_iWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394F6315E3C2419936988F4C /* Pods_iWall.framework */; };
+		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
 		D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639E2464C62400F7823C /* SceneDelegate.swift */; };
-		D6FD63A12464C62400F7823C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63A02464C62400F7823C /* ViewController.swift */; };
+		D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63A02464C62400F7823C /* FirstViewController.swift */; };
 		D6FD63A42464C62400F7823C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A22464C62400F7823C /* Main.storyboard */; };
 		D6FD63A62464C62900F7823C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A52464C62900F7823C /* Assets.xcassets */; };
 		D6FD63A92464C62900F7823C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */; };
+		D6FD63B12464C79300F7823C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63B02464C79300F7823C /* SignUpViewController.swift */; };
+		D6FD63B32464C7B900F7823C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63B22464C7B900F7823C /* LoginViewController.swift */; };
+		D6FD63B52464C7CB00F7823C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63B42464C7CB00F7823C /* HomeViewController.swift */; };
+		D6FD63BB2464D27100F7823C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63BA2464D27000F7823C /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D75C7EAEAB8D5C80818C009 /* Pods-iWall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWall.debug.xcconfig"; path = "Target Support Files/Pods-iWall/Pods-iWall.debug.xcconfig"; sourceTree = "<group>"; };
+		394F6315E3C2419936988F4C /* Pods_iWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB7AA1D5B1717C4DE42D844C /* Pods-iWall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWall.release.xcconfig"; path = "Target Support Files/Pods-iWall/Pods-iWall.release.xcconfig"; sourceTree = "<group>"; };
+		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6FD63992464C62400F7823C /* iWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FD639C2464C62400F7823C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6FD639E2464C62400F7823C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D6FD63A02464C62400F7823C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6FD63A02464C62400F7823C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D6FD63A32464C62400F7823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6FD63A52464C62900F7823C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6FD63A82464C62900F7823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6FD63AA2464C62900F7823C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6FD63B02464C79300F7823C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D6FD63B22464C7B900F7823C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6FD63B42464C7CB00F7823C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D6FD63BA2464D27000F7823C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D3950EDD4C17FDEF3460C2F /* Pods_iWall.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6F9FF0D91C1A99614F47325 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D75C7EAEAB8D5C80818C009 /* Pods-iWall.debug.xcconfig */,
+				BB7AA1D5B1717C4DE42D844C /* Pods-iWall.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D60701642464D30300D934BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD63BA2464D27000F7823C /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D6FD63902464C62400F7823C = {
 			isa = PBXGroup;
 			children = (
 				D6FD639B2464C62400F7823C /* iWall */,
 				D6FD639A2464C62400F7823C /* Products */,
+				C6F9FF0D91C1A99614F47325 /* Pods */,
+				DAC6732D271D7F09AAFE470A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +93,42 @@
 			children = (
 				D6FD639C2464C62400F7823C /* AppDelegate.swift */,
 				D6FD639E2464C62400F7823C /* SceneDelegate.swift */,
-				D6FD63A02464C62400F7823C /* ViewController.swift */,
+				D6FD63B72464C7E300F7823C /* View Controllers. */,
+				D6FD63B92464C82100F7823C /* View */,
+				D6FD63AA2464C62900F7823C /* Info.plist */,
+				D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */,
+			);
+			path = iWall;
+			sourceTree = "<group>";
+		};
+		D6FD63B72464C7E300F7823C /* View Controllers. */ = {
+			isa = PBXGroup;
+			children = (
+				D6FD63A02464C62400F7823C /* FirstViewController.swift */,
+				D6FD63B02464C79300F7823C /* SignUpViewController.swift */,
+				D6FD63B22464C7B900F7823C /* LoginViewController.swift */,
+				D6FD63B42464C7CB00F7823C /* HomeViewController.swift */,
+			);
+			path = "View Controllers.";
+			sourceTree = "<group>";
+		};
+		D6FD63B92464C82100F7823C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D60701642464D30300D934BB /* Helpers */,
 				D6FD63A22464C62400F7823C /* Main.storyboard */,
 				D6FD63A52464C62900F7823C /* Assets.xcassets */,
 				D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */,
-				D6FD63AA2464C62900F7823C /* Info.plist */,
 			);
-			path = iWall;
+			path = View;
+			sourceTree = "<group>";
+		};
+		DAC6732D271D7F09AAFE470A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				394F6315E3C2419936988F4C /* Pods_iWall.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6FD63AD2464C62900F7823C /* Build configuration list for PBXNativeTarget "iWall" */;
 			buildPhases = (
+				C8E468674170958848A72018 /* [CP] Check Pods Manifest.lock */,
 				D6FD63952464C62400F7823C /* Sources */,
 				D6FD63962464C62400F7823C /* Frameworks */,
 				D6FD63972464C62400F7823C /* Resources */,
+				A083A7A8F5ED700AB23ACC34 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6FD63A92464C62900F7823C /* LaunchScreen.storyboard in Resources */,
+				D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */,
 				D6FD63A62464C62900F7823C /* Assets.xcassets in Resources */,
 				D6FD63A42464C62400F7823C /* Main.storyboard in Resources */,
 			);
@@ -133,14 +200,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A083A7A8F5ED700AB23ACC34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iWall/Pods-iWall-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iWall/Pods-iWall-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iWall/Pods-iWall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8E468674170958848A72018 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iWall-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D6FD63952464C62400F7823C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6FD63A12464C62400F7823C /* ViewController.swift in Sources */,
+				D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */,
 				D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */,
+				D6FD63BB2464D27100F7823C /* Utilities.swift in Sources */,
+				D6FD63B12464C79300F7823C /* SignUpViewController.swift in Sources */,
+				D6FD63B32464C7B900F7823C /* LoginViewController.swift in Sources */,
 				D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */,
+				D6FD63B52464C7CB00F7823C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +395,11 @@
 		};
 		D6FD63AE2464C62900F7823C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D75C7EAEAB8D5C80818C009 /* Pods-iWall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6934287Y4;
 				INFOPLIST_FILE = iWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -299,9 +414,11 @@
 		};
 		D6FD63AF2464C62900F7823C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB7AA1D5B1717C4DE42D844C /* Pods-iWall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6934287Y4;
 				INFOPLIST_FILE = iWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,0 +1,6 @@
+framework module Pods_iWall {
+  umbrella header "Pods-iWall-umbrella.h"
+
+  export *
+  module * { export * }
+}
