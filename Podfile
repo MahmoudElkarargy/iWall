@@ -16,13 +16,5 @@ target 'iWall' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
-   target 'iWall' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'iWall' do
-    # Pods for testing
-  end
-
+   
 end

@@ -67,17 +67,17 @@ class SignUpViewController: UIViewController {
         }
         else {
             //Create the user
-            Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { (result, error) in
-                //check for erros.
-                if error != nil{
-                    //There was an error creating User.
-                    self.ShowError("Error creating user")
-                }
-                else{
-                    //User was created succesfully, now store the first and last name.
-                }
-            }
-            //Transition to the home screen.
+//            Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { (result, error) in
+//                //check for erros.
+//                if error != nil{
+//                    //There was an error creating User.
+//                    self.ShowError("Error creating user")
+//                }
+//                else{
+//                    //User was created succesfully, now store the first and last name.
+//                }
+//            }
+//            //Transition to the home screen.
         }
     }
     func ShowError(_ message: String){
