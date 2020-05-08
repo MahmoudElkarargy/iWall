@@ -7,11 +7,22 @@ target 'iWall' do
 
   # Pods for iWall
 
-   pod 'Firebase/Analytics'
-   pod 'Firebase/Auth'
-   pod 'Firebase/Database'
-   pod 'Firebase/Storage'
-   pod 'Firebase/RemoteConfig'
-   pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+   target 'iWall' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'iWall' do
+    # Pods for testing
+  end
 
 end

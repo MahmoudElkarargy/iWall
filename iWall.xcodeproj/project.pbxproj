@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,7 +58,6 @@
 				0D75C7EAEAB8D5C80818C009 /* Pods-iWall.debug.xcconfig */,
 				BB7AA1D5B1717C4DE42D844C /* Pods-iWall.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
