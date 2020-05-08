@@ -102,17 +102,39 @@
                                     <constraint firstItem="mPd-U9-yRN" firstAttribute="height" secondItem="Cyu-jf-JVP" secondAttribute="height" id="dJv-fe-YYl"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylr-n0-vKI">
+                                <rect key="frame" x="84" y="802" width="246" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9dV-jt-mba"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="sqn-AZ-QQr" eventType="touchUpInside" id="OwX-7v-M4B"/>
+                                    <action selector="backButtonTapped:" destination="R3h-JX-l8z" eventType="touchUpInside" id="sBW-qg-W1b"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="KOS-AS-OQ6">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Ylr-n0-vKI" firstAttribute="leading" secondItem="NKa-va-HZ0" secondAttribute="leading" constant="84" id="1pj-Vt-XBs"/>
                             <constraint firstItem="YND-1m-Sv4" firstAttribute="top" secondItem="NKa-va-HZ0" secondAttribute="top" constant="40" id="2tW-NZ-AOe"/>
                             <constraint firstItem="NKa-va-HZ0" firstAttribute="trailing" secondItem="YND-1m-Sv4" secondAttribute="trailing" constant="40" id="M7S-Dg-vWt"/>
+                            <constraint firstItem="NKa-va-HZ0" firstAttribute="trailing" secondItem="Ylr-n0-vKI" secondAttribute="trailing" constant="84" id="SK9-Ia-vHn"/>
+                            <constraint firstItem="NKa-va-HZ0" firstAttribute="bottom" secondItem="Ylr-n0-vKI" secondAttribute="bottom" constant="20" id="gU1-BW-pLm"/>
                             <constraint firstItem="YND-1m-Sv4" firstAttribute="leading" secondItem="NKa-va-HZ0" secondAttribute="leading" constant="40" id="xTS-xk-OgR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NKa-va-HZ0"/>
                     </view>
                     <navigationItem key="navigationItem" id="jAQ-KS-fxn"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="KOS-AS-OQ6" id="UuL-st-afK"/>
+                        <outlet property="backButton" destination="Ylr-n0-vKI" id="2fs-6M-1pc"/>
                         <outlet property="emailTextField" destination="Cyu-jf-JVP" id="5YU-mc-Rmk"/>
                         <outlet property="errorLabel" destination="CIw-Ba-GaG" id="Sxx-QL-Rsn"/>
                         <outlet property="loginButton" destination="mPd-U9-yRN" id="nSd-Tt-VFa"/>
@@ -178,17 +200,39 @@
                                     <constraint firstItem="WAd-CS-Wfa" firstAttribute="height" secondItem="f0x-Xv-AiU" secondAttribute="height" id="hEJ-US-jPo"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hho-Lg-MEf">
+                                <rect key="frame" x="84" y="802" width="246" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WMa-aA-AjV"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="sqn-AZ-QQr" eventType="touchUpInside" id="yaJ-xg-of7"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-7A-f7H">
+                                <rect key="frame" x="188.5" y="545" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Hho-Lg-MEf" firstAttribute="leading" secondItem="tm6-KW-JdR" secondAttribute="leading" constant="84" id="7hW-0d-E4z"/>
+                            <constraint firstItem="yhY-7A-f7H" firstAttribute="centerX" secondItem="hhO-aQ-cRJ" secondAttribute="centerX" id="FsL-B5-dnN"/>
                             <constraint firstItem="n7b-ym-edN" firstAttribute="leading" secondItem="tm6-KW-JdR" secondAttribute="leading" constant="40" id="PRO-XR-oYX"/>
                             <constraint firstItem="tm6-KW-JdR" firstAttribute="trailing" secondItem="n7b-ym-edN" secondAttribute="trailing" constant="40" id="aR0-mc-YSf"/>
                             <constraint firstItem="n7b-ym-edN" firstAttribute="top" secondItem="tm6-KW-JdR" secondAttribute="top" constant="40" id="gWu-X2-j7x"/>
+                            <constraint firstItem="Hho-Lg-MEf" firstAttribute="top" secondItem="yhY-7A-f7H" secondAttribute="bottom" constant="220" id="iGs-G3-AYe"/>
+                            <constraint firstItem="tm6-KW-JdR" firstAttribute="bottom" secondItem="Hho-Lg-MEf" secondAttribute="bottom" constant="20" id="svg-RU-9DY"/>
+                            <constraint firstItem="tm6-KW-JdR" firstAttribute="trailing" secondItem="Hho-Lg-MEf" secondAttribute="trailing" constant="84" id="wMV-dZ-A7k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tm6-KW-JdR"/>
                     </view>
                     <navigationItem key="navigationItem" id="hKt-8W-Uev"/>
                     <connections>
+                        <outlet property="activivtyIndicator" destination="yhY-7A-f7H" id="VjE-fX-x2a"/>
+                        <outlet property="backButton" destination="Hho-Lg-MEf" id="qg4-ok-BQm"/>
                         <outlet property="emailTextField" destination="WAd-CS-Wfa" id="Ebm-Iv-bXg"/>
                         <outlet property="errorLabel" destination="fmj-oN-zQ7" id="2f0-4h-jKY"/>
                         <outlet property="firstNameTextField" destination="f0x-Xv-AiU" id="VL9-7I-DHG"/>
@@ -199,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZb-Y3-znR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1922" y="-235"/>
+            <point key="canvasLocation" x="1921.7391304347827" y="-235.04464285714283"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="soT-lH-CMk">

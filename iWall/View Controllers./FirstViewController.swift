@@ -56,6 +56,4 @@ class FirstViewController: UIViewController {
         //Add it to the view and play it.
         player?.playImmediately(atRate: 0.7)
     }
-    
 }
-
