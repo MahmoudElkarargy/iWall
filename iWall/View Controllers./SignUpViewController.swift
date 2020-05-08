@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -66,22 +67,47 @@ class SignUpViewController: UIViewController {
             ShowError(error!)
         }
         else {
+            //Create cleaned virsions of data
+            let firstName = self.firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = self.lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = self.passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             //Create the user
-//            Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { (result, error) in
-//                //check for erros.
-//                if error != nil{
-//                    //There was an error creating User.
-//                    self.ShowError("Error creating user")
-//                }
-//                else{
-//                    //User was created succesfully, now store the first and last name.
-//                }
-//            }
-//            //Transition to the home screen.
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                //check for erros.
+                if error != nil{
+                    //There was an error creating User.
+                    self.ShowError(error!.localizedDescription)
+                }
+                else{
+                    //User was created succesfully, now store the first and last name.
+                    let db = Firestore.firestore()
+
+                    db.collection("users").addDocument(data: [
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "uid": result!.user.uid
+                    ]) { err in
+                        if let err = err {
+                            self.ShowError("Error adding user: \(err)")
+                        } else {
+                            print("Document added with ID:")
+                        }
+                    }
+                    //Transition to the home screen.
+                    self.TransitionToHome()
+                }
+            }
         }
     }
     func ShowError(_ message: String){
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    func TransitionToHome(){
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoard.homeViewController)
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
 }

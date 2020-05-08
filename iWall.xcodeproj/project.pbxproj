@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D3950EDD4C17FDEF3460C2F /* Pods_iWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394F6315E3C2419936988F4C /* Pods_iWall.framework */; };
+		D627D21B246514120085BF20 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627D21A246514120085BF20 /* Constants.swift */; };
 		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
 		D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639E2464C62400F7823C /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 		0D75C7EAEAB8D5C80818C009 /* Pods-iWall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWall.debug.xcconfig"; path = "Target Support Files/Pods-iWall/Pods-iWall.debug.xcconfig"; sourceTree = "<group>"; };
 		394F6315E3C2419936988F4C /* Pods_iWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7AA1D5B1717C4DE42D844C /* Pods-iWall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWall.release.xcconfig"; path = "Target Support Files/Pods-iWall/Pods-iWall.release.xcconfig"; sourceTree = "<group>"; };
+		D627D21A246514120085BF20 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6FD63992464C62400F7823C /* iWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FD639C2464C62400F7823C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				D6FD63BA2464D27000F7823C /* Utilities.swift */,
+				D627D21A246514120085BF20 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				D6FD63B32464C7B900F7823C /* LoginViewController.swift in Sources */,
 				D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */,
 				D6FD63B52464C7CB00F7823C /* HomeViewController.swift in Sources */,
+				D627D21B246514120085BF20 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
