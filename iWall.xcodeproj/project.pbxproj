@@ -12,7 +12,9 @@
 		D627D220246524900085BF20 /* FirstVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D21F246524900085BF20 /* FirstVideo.mp4 */; };
 		D627D22224652CA80085BF20 /* Login.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D22124652CA80085BF20 /* Login.mp4 */; };
 		D627D224246531250085BF20 /* signup.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D223246531250085BF20 /* signup.mp4 */; };
+		D65C234824660F99001EE027 /* ImageSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C234724660F99001EE027 /* ImageSearchResponse.swift */; };
 		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
+		D6CA0DED2465D24000826D05 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA0DEC2465D24000826D05 /* Client.swift */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
 		D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639E2464C62400F7823C /* SceneDelegate.swift */; };
 		D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63A02464C62400F7823C /* FirstViewController.swift */; };
@@ -33,7 +35,9 @@
 		D627D21F246524900085BF20 /* FirstVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FirstVideo.mp4; sourceTree = "<group>"; };
 		D627D22124652CA80085BF20 /* Login.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Login.mp4; sourceTree = "<group>"; };
 		D627D223246531250085BF20 /* signup.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = signup.mp4; sourceTree = "<group>"; };
+		D65C234724660F99001EE027 /* ImageSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchResponse.swift; sourceTree = "<group>"; };
 		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D6CA0DEC2465D24000826D05 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D6FD63992464C62400F7823C /* iWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FD639C2464C62400F7823C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6FD639E2464C62400F7823C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,31 @@
 			path = Movies;
 			sourceTree = "<group>";
 		};
+		D65C234624660F7A001EE027 /* Response. */ = {
+			isa = PBXGroup;
+			children = (
+				D65C234724660F99001EE027 /* ImageSearchResponse.swift */,
+			);
+			path = Response.;
+			sourceTree = "<group>";
+		};
+		D6CA0DEA2465D1EC00826D05 /* Model. */ = {
+			isa = PBXGroup;
+			children = (
+				D65C234624660F7A001EE027 /* Response. */,
+				D6CA0DEB2465D20800826D05 /* Client */,
+			);
+			path = Model.;
+			sourceTree = "<group>";
+		};
+		D6CA0DEB2465D20800826D05 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				D6CA0DEC2465D24000826D05 /* Client.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		D6FD63902464C62400F7823C = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +140,8 @@
 			children = (
 				D6FD639C2464C62400F7823C /* AppDelegate.swift */,
 				D6FD639E2464C62400F7823C /* SceneDelegate.swift */,
-				D6FD63B72464C7E300F7823C /* View Controllers. */,
+				D6CA0DEA2465D1EC00826D05 /* Model. */,
+				D6FD63B72464C7E300F7823C /* View Controllers */,
 				D6FD63B92464C82100F7823C /* View */,
 				D6FD63AA2464C62900F7823C /* Info.plist */,
 				D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */,
@@ -119,7 +149,7 @@
 			path = iWall;
 			sourceTree = "<group>";
 		};
-		D6FD63B72464C7E300F7823C /* View Controllers. */ = {
+		D6FD63B72464C7E300F7823C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D6FD63A02464C62400F7823C /* FirstViewController.swift */,
@@ -127,7 +157,7 @@
 				D6FD63B22464C7B900F7823C /* LoginViewController.swift */,
 				D6FD63B42464C7CB00F7823C /* HomeViewController.swift */,
 			);
-			path = "View Controllers.";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		D6FD63B92464C82100F7823C /* View */ = {
@@ -277,6 +307,8 @@
 				D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */,
 				D6FD63B52464C7CB00F7823C /* HomeViewController.swift in Sources */,
 				D627D21B246514120085BF20 /* Constants.swift in Sources */,
+				D65C234824660F99001EE027 /* ImageSearchResponse.swift in Sources */,
+				D6CA0DED2465D24000826D05 /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

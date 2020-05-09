@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -253,24 +254,112 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNM-2U-JHM">
-                                <rect key="frame" x="167.5" y="437.5" width="79" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-bj-rFt">
+                                <rect key="frame" x="87" y="49" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bbg-bj-rFt" secondAttribute="height" multiplier="15:8" id="lfi-uu-gth"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnp-z5-AtX">
+                                <rect key="frame" x="362" y="44" width="27" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nnp-z5-AtX" secondAttribute="height" multiplier="9:11" id="mqk-R7-73V"/>
+                                </constraints>
+                                <state key="normal" image="user"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oar-iI-MQL">
+                                <rect key="frame" x="20" y="185" width="374" height="34"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zFZ-7z-Uys">
+                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYA-fF-GFj">
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v6n-Hq-d2c">
+                                                <rect key="frame" x="66.5" y="0.0" width="120" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="TVh-XI-8St"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AUz-tI-hQa">
+                                        <rect key="frame" x="210.5" y="0.0" width="163.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wld-Fe-F71">
+                                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pi-Md-jDv">
+                                                <rect key="frame" x="43.5" y="0.0" width="120" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="BmM-Fq-BfH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AUz-tI-hQa" firstAttribute="leading" secondItem="oar-iI-MQL" secondAttribute="leading" constant="210.5" id="dVH-jQ-W61"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-ZZ-G4c">
+                                <rect key="frame" x="20" y="241" width="374" height="655"/>
+                                <color key="backgroundColor" red="0.084567657178997307" green="0.55883350493040529" blue="0.66687580958549231" alpha="0.40996368838028169" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LDE-VF-qbM">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zx7-OJ-0Mz">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ntr-8v-dfK">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.83760597854938101" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sNM-2U-JHM" firstAttribute="centerY" secondItem="Ag3-E0-lVe" secondAttribute="centerY" id="Wjl-Kk-Yva"/>
-                            <constraint firstItem="sNM-2U-JHM" firstAttribute="centerX" secondItem="Ag3-E0-lVe" secondAttribute="centerX" id="gtP-Jo-dmL"/>
+                            <constraint firstItem="bbg-bj-rFt" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" constant="5" id="3ag-hA-o4W"/>
+                            <constraint firstItem="oar-iI-MQL" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="Bvn-tS-JYi"/>
+                            <constraint firstItem="bbg-bj-rFt" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="87" id="Cjv-Q6-lwN"/>
+                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="cPc-ZZ-G4c" secondAttribute="trailing" constant="20" id="DQi-9N-le4"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="FbC-eP-Iqs"/>
+                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="nnp-z5-AtX" secondAttribute="trailing" constant="25" id="HtR-OR-01S"/>
+                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="bbg-bj-rFt" secondAttribute="trailing" constant="87" id="M57-6Z-kqe"/>
+                            <constraint firstItem="oar-iI-MQL" firstAttribute="top" secondItem="bbg-bj-rFt" secondAttribute="bottom" constant="8" id="PYA-fR-fOK"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="22" id="Suq-e7-P8s"/>
+                            <constraint firstItem="nnp-z5-AtX" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" id="Xm2-fw-gyb"/>
+                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="oar-iI-MQL" secondAttribute="trailing" constant="20" id="Y1h-zf-JkU"/>
+                            <constraint firstAttribute="bottom" secondItem="cPc-ZZ-G4c" secondAttribute="bottom" id="b1C-ru-Ysf"/>
+                            <constraint firstItem="nnp-z5-AtX" firstAttribute="leading" secondItem="bbg-bj-rFt" secondAttribute="trailing" constant="35" id="uw3-wK-wid"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ywq-Jf-heH"/>
                     </view>
+                    <connections>
+                        <outlet property="tagTextField" destination="1Pi-Md-jDv" id="917-Ju-31c"/>
+                        <outlet property="typeTextField" destination="v6n-Hq-d2c" id="c3n-EY-GKO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmy-bh-Rmm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2835" y="110"/>
+            <point key="canvasLocation" x="2834.7826086956525" y="109.82142857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DvM-IC-nFd">
@@ -290,4 +379,8 @@
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="542" height="130"/>
+        <image name="user" width="35.5" height="44.5"/>
+    </resources>
 </document>

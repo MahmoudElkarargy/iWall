@@ -16,5 +16,6 @@ target 'iWall' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'UnsplashPhotoPicker', '~> 1.1.1'
    
 end
