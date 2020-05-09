@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import UnsplashPhotoPicker
 
 class HomeViewController: UIViewController{
+    
+    
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var tagTextField: UITextField!
     
@@ -22,10 +23,9 @@ class HomeViewController: UIViewController{
         Utilities.styleTextField(tagTextField, placeHolderString: "Add tag.")
         
         
-//        Client.getPhotosSearchResult(target: "iphone") { (bool, error) in
-//            print("edaa")
-//        }
-        UnsplashPhotoPickerConfiguration(accessKey: Client.Auth.accessKey, secretKey: Client.Auth.secretKey)
+        Client.getPhotosSearchResult(target: "iphone") { (bool, error) in
+            print("edaa")
+        }
         
     }
 }
