@@ -12,14 +12,16 @@
 		D627D220246524900085BF20 /* FirstVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D21F246524900085BF20 /* FirstVideo.mp4 */; };
 		D627D22224652CA80085BF20 /* Login.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D22124652CA80085BF20 /* Login.mp4 */; };
 		D627D224246531250085BF20 /* signup.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D627D223246531250085BF20 /* signup.mp4 */; };
+		D630C5A9246750F100DC65FC /* ImageSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D630C5A8246750F000DC65FC /* ImageSelectedViewController.swift */; };
 		D65C234824660F99001EE027 /* ImageSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C234724660F99001EE027 /* ImageSearchResponse.swift */; };
+		D6828675246722D800CDCCB5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6828674246722D800CDCCB5 /* CollectionViewCell.swift */; };
+		D6828679246727E000CDCCB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6828678246727E000CDCCB5 /* Main.storyboard */; };
 		D6B09AE02466600700220EFC /* IPhoneDevices..swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B09ADF2466600700220EFC /* IPhoneDevices..swift */; };
 		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
 		D6CA0DED2465D24000826D05 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA0DEC2465D24000826D05 /* Client.swift */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
 		D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639E2464C62400F7823C /* SceneDelegate.swift */; };
 		D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63A02464C62400F7823C /* FirstViewController.swift */; };
-		D6FD63A42464C62400F7823C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A22464C62400F7823C /* Main.storyboard */; };
 		D6FD63A62464C62900F7823C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A52464C62900F7823C /* Assets.xcassets */; };
 		D6FD63A92464C62900F7823C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */; };
 		D6FD63B12464C79300F7823C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD63B02464C79300F7823C /* SignUpViewController.swift */; };
@@ -36,7 +38,10 @@
 		D627D21F246524900085BF20 /* FirstVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FirstVideo.mp4; sourceTree = "<group>"; };
 		D627D22124652CA80085BF20 /* Login.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Login.mp4; sourceTree = "<group>"; };
 		D627D223246531250085BF20 /* signup.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = signup.mp4; sourceTree = "<group>"; };
+		D630C5A8246750F000DC65FC /* ImageSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectedViewController.swift; sourceTree = "<group>"; };
 		D65C234724660F99001EE027 /* ImageSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchResponse.swift; sourceTree = "<group>"; };
+		D6828674246722D800CDCCB5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		D6828678246727E000CDCCB5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D6B09ADF2466600700220EFC /* IPhoneDevices..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneDevices..swift; sourceTree = "<group>"; };
 		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6CA0DEC2465D24000826D05 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -44,7 +49,6 @@
 		D6FD639C2464C62400F7823C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6FD639E2464C62400F7823C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D6FD63A02464C62400F7823C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		D6FD63A32464C62400F7823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6FD63A52464C62900F7823C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6FD63A82464C62900F7823C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6FD63AA2464C62900F7823C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				D6FD63B02464C79300F7823C /* SignUpViewController.swift */,
 				D6FD63B22464C7B900F7823C /* LoginViewController.swift */,
 				D6FD63B42464C7CB00F7823C /* HomeViewController.swift */,
+				D630C5A8246750F000DC65FC /* ImageSelectedViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -176,9 +181,10 @@
 			children = (
 				D627D21C24651BE00085BF20 /* Movies */,
 				D60701642464D30300D934BB /* Helpers */,
-				D6FD63A22464C62400F7823C /* Main.storyboard */,
+				D6828674246722D800CDCCB5 /* CollectionViewCell.swift */,
 				D6FD63A52464C62900F7823C /* Assets.xcassets */,
 				D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */,
+				D6828678246727E000CDCCB5 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,8 +262,8 @@
 				D627D220246524900085BF20 /* FirstVideo.mp4 in Resources */,
 				D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */,
 				D6FD63A62464C62900F7823C /* Assets.xcassets in Resources */,
-				D6FD63A42464C62400F7823C /* Main.storyboard in Resources */,
 				D627D224246531250085BF20 /* signup.mp4 in Resources */,
+				D6828679246727E000CDCCB5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +318,7 @@
 			files = (
 				D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */,
 				D6B09AE02466600700220EFC /* IPhoneDevices..swift in Sources */,
+				D6828675246722D800CDCCB5 /* CollectionViewCell.swift in Sources */,
 				D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */,
 				D6FD63BB2464D27100F7823C /* Utilities.swift in Sources */,
 				D6FD63B12464C79300F7823C /* SignUpViewController.swift in Sources */,
@@ -321,20 +328,13 @@
 				D627D21B246514120085BF20 /* Constants.swift in Sources */,
 				D65C234824660F99001EE027 /* ImageSearchResponse.swift in Sources */,
 				D6CA0DED2465D24000826D05 /* Client.swift in Sources */,
+				D630C5A9246750F100DC65FC /* ImageSelectedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D6FD63A22464C62400F7823C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6FD63A32464C62400F7823C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

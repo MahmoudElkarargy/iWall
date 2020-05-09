@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var numberOfImagesToBeLoaded: Int = 0
+    var responseGlobal: ImagesSearchResponse?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElments()
@@ -27,6 +29,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         Utilities.styleTextField(tagTextField, placeHolderString: "Add tag.")
         typeTextField.delegate = self
         tagTextField.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         //init a pickerView.
         let iPhonePicker = UIPickerView()
         iPhonePicker.delegate = self
@@ -36,6 +40,12 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         iPhonePicker.backgroundColor = UIColor.init(red: 59/255, green: 197/255, blue: 238/255, alpha: 1)
         
         createToolBar()
+        
+        //set spacing of cells.
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
+        layout.minimumInteritemSpacing = 5
+        layout.itemSize = CGSize(width: (self.collectionView.frame.size.width-20)/2, height: (self.collectionView.frame.size.height)/5)
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -76,9 +86,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 //requist Search without tags!
                 print(targetStriing)
             }
-            Client.getPhotosSearchResult(tag: targetStriing, minWidth: IPhoneDevices.returnMinWidth(device: typeTextField.text!), minHeight: IPhoneDevices.returnMinHeight(device: typeTextField.text!)) { (bool, error) in
-                        print("edaa")
-            }
+            Client.getPhotosSearchResult(tag: targetStriing, minWidth: IPhoneDevices.returnMinWidth(device: typeTextField.text!), minHeight: IPhoneDevices.returnMinHeight(device: typeTextField.text!), completionHandler:
+            handleImagesSearchResponse(response:error:))
         } else { ShowError("Enter mobile type please.")}
         
         
@@ -86,6 +95,29 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     func ShowError(_ message: String){
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    func handleImagesSearchResponse(response: ImagesSearchResponse?, error: Error?){
+        guard error == nil , response != nil else {
+            ShowError("Can't load data")
+            return
+        }
+        //Everthing is good to go!
+        responseGlobal = response
+        print("Tmam search is done.")
+        if response!.total > 0{
+            //Okay there, pics!
+            if response!.total > 10{
+                //make sure everypage contains only 10 imgs.
+                numberOfImagesToBeLoaded = 10
+            } else{
+                numberOfImagesToBeLoaded = response!.total
+            }
+            print("numbers: \(numberOfImagesToBeLoaded)")
+            collectionView.reloadData()
+        }
+        else{
+            ShowError("No images found!")
+        }
     }
 }
 
@@ -118,4 +150,76 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         return label
     }
     
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("fe eh 3l sobh??????\(numberOfImagesToBeLoaded)")
+        return numberOfImagesToBeLoaded
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+        print("Setting Cell")
+        cell.cellLabel.text = responseGlobal?.hits[indexPath.row].tags
+        print("inex: \(indexPath.row)")
+        print("url is : \(responseGlobal?.hits[indexPath.row].previewURL)")
+        downloadImage(url: (responseGlobal?.hits[indexPath.row].previewURL)!) { (image) -> Void in
+            // display it
+            cell.imageview.image = image
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.white.cgColor
+        cell?.layer.borderWidth = 3
+        //Navigate to see the Image Selected.
+//        TransitionToSelectedImage()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.layer.borderWidth = 0.5
+    }
+    
+    // this method downloads a huge image on a global queue
+    // once finished, the completion closure runs with the image
+    func downloadImage(url:String, completionHandler handler: @escaping (UIImage?) -> Void){
+        DispatchQueue.global(qos: .userInitiated).async {
+            // use url to get the data for the image
+            print("testing url")
+            if let url = URL(string: url), let imgData = try? Data(contentsOf: url) {
+                print("url is good")
+                // turn data into an image
+                let image = UIImage(data: imgData)
+                print("turned into image")
+                // always run completion handler in the main queue, just in case!
+                DispatchQueue.main.async {
+                    print("return itt")
+                    handler(image)
+                }
+            }
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectedImageSegue"{
+            print("Eh el klam??")
+//            let mediaCollectionView = segue.destination as! MediaCollectionViewController
+//            if let pins = fetchedResultsController.fetchedObjects {
+//            // there will be only one selected annotation at a time
+//            let annotation = mapView.selectedAnnotations[0]
+//            // getting the index of the selected annotation to set pin value in destination VC
+//            guard let indexPath = pins.firstIndex(where: {
+//                (pin) -> Bool in
+//                pin.latitude == annotation.coordinate.latitude && pin.longitude == annotation.coordinate.longitude
+//            })else{return}
+//            mediaCollectionView.selectedPin = pins[indexPath]
+//            mediaCollectionView.response = searchResponse
+//            }
+        }
+        
+    }
 }

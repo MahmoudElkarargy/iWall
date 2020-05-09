@@ -11,5 +11,6 @@ import Foundation
 struct Constants {
     struct StoryBoard {
         static let homeViewController = "HomeVC"
+        static let imageSelectedViewController = "ImageSelected"
     }
 }
