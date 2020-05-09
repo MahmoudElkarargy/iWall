@@ -18,6 +18,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     
     var numberOfImagesToBeLoaded: Int = 0
     var responseGlobal: ImagesSearchResponse?
+    var indexOfSelectedImage: Int = 0
+//    var selectedImage: UIImage!
+//    var selectedTag: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElments()
@@ -37,7 +40,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         
         typeTextField.inputView = iPhonePicker
         //Customization
-        iPhonePicker.backgroundColor = UIColor.init(red: 59/255, green: 197/255, blue: 238/255, alpha: 1)
+        iPhonePicker.backgroundColor = UIColor.init(red: 31/255, green: 33/255, blue: 36/255, alpha: 1)
         
         createToolBar()
         
@@ -58,7 +61,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         //Customizations
-        toolBar.barTintColor = UIColor.init(red: 59/255, green: 197/255, blue: 238/255, alpha: 0.5)
+        toolBar.barTintColor = UIColor.init(red: 35/255, green: 37/255, blue: 41/255, alpha: 0.5)
         toolBar.tintColor = .white
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(HomeViewController.dismissKeyboard))
         toolBar.setItems([doneButton], animated: true)
@@ -168,6 +171,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             // display it
             cell.imageview.image = image
         }
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 10
         return cell
     }
     
@@ -175,8 +181,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.white.cgColor
         cell?.layer.borderWidth = 3
+        
         //Navigate to see the Image Selected.
-//        TransitionToSelectedImage()
+        indexOfSelectedImage = indexPath.row
+        print("now index: \(indexOfSelectedImage)")
+        performSegue(withIdentifier: "selectedImageSegue", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -207,19 +216,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedImageSegue"{
             print("Eh el klam??")
-//            let mediaCollectionView = segue.destination as! MediaCollectionViewController
-//            if let pins = fetchedResultsController.fetchedObjects {
-//            // there will be only one selected annotation at a time
-//            let annotation = mapView.selectedAnnotations[0]
-//            // getting the index of the selected annotation to set pin value in destination VC
-//            guard let indexPath = pins.firstIndex(where: {
-//                (pin) -> Bool in
-//                pin.latitude == annotation.coordinate.latitude && pin.longitude == annotation.coordinate.longitude
-//            })else{return}
-//            mediaCollectionView.selectedPin = pins[indexPath]
-//            mediaCollectionView.response = searchResponse
-//            }
+            let imageSelectedView = segue.destination as! ImageSelectedViewController
+            imageSelectedView.imageURL = responseGlobal?.hits[indexOfSelectedImage].largeImageURL
+            imageSelectedView.labelText = responseGlobal?.hits[indexOfSelectedImage].tags
+            print("url is : \(responseGlobal?.hits[indexOfSelectedImage].largeImageURL)")
+            
         }
-        
     }
+    
 }
