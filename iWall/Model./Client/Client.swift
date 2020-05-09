@@ -9,8 +9,7 @@
 import Foundation
 
 class Client{
-
-
+ 
     // MARK: Struct to hold the Authentication keys.
     struct Auth {
         static var key = "16453561-407af218bb4dc4ba3f3219e21"
@@ -20,12 +19,12 @@ class Client{
     enum EndPoints{
         static let base = "https://pixabay.com/api/?key=" + Auth.key
 
-        case searchImages
+        case searchImages(tag: String, minWidth: Int, minHeight: Int)
         var stringValue: String{
             switch self {
-            case .searchImages:
-                return EndPoints.base 
-//             "https://pixabay.com/api/?key=16453561-407af218bb4dc4ba3f3219e21&q=yellow+flowers&image_type=photo&pretty=true"
+            case .searchImages(let tag, let minWidth, let minHeight):
+                return EndPoints.base + "&q=iPhone+\(tag)" + "&min_width=\(minWidth)&min_height=\(minHeight)"
+                        + "&per_page=10&page=1&image_type=photo"
             }
         }
         var url: URL {
@@ -34,16 +33,15 @@ class Client{
         }
     }
 
-//    // MARK: Get Search Data.
-//    class func getPhotosSearchResult(lat:Double,lon:Double, page: Int ,completionHandler: @escaping (ImagesSearchResponse?, Error?) -> Void){
-    class func getPhotosSearchResult(target: String ,completionHandler: @escaping (Bool?, Error?) -> Void){
-
+    // MARK: Get Search Data.
+    class func getPhotosSearchResult(tag: String, minWidth:Int, minHeight:Int ,completionHandler: @escaping (ImagesSearchResponse?, Error?) -> Void){
+        
         let q = DispatchQueue.global(qos: .userInteractive)
         q.async {
-            let task = URLSession.shared.dataTask(with: EndPoints.searchImages.url) { data, response, error in
+            let task = URLSession.shared.dataTask(with: EndPoints.searchImages(tag: tag, minWidth: minWidth, minHeight: minHeight).url) { data, response, error in
                 guard let data = data else {
                     DispatchQueue.main.async {
-                        completionHandler(false, error)
+                        completionHandler(nil, error)
                     }
                     return
                 }
@@ -52,12 +50,11 @@ class Client{
                     let decoder = JSONDecoder()
                     let responseObject = try decoder.decode(ImagesSearchResponse.self, from: data)
                     DispatchQueue.main.async {
-                        print("kolo tamam")
-                            completionHandler(true, nil)
+                        print("Response is succeful")
+                            completionHandler(responseObject, nil)
                         }
                     } catch {
                        DispatchQueue.main.async {
-                        print("no")
                             completionHandler(nil, error)
                         }
                     }

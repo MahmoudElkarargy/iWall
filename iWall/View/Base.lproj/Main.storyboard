@@ -267,54 +267,8 @@
                                 </constraints>
                                 <state key="normal" image="user"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oar-iI-MQL">
-                                <rect key="frame" x="20" y="185" width="374" height="34"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zFZ-7z-Uys">
-                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYA-fF-GFj">
-                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="34"/>
-                                                <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="18"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v6n-Hq-d2c">
-                                                <rect key="frame" x="66.5" y="0.0" width="120" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="TVh-XI-8St"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AUz-tI-hQa">
-                                        <rect key="frame" x="210.5" y="0.0" width="163.5" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wld-Fe-F71">
-                                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="34"/>
-                                                <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="18"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pi-Md-jDv">
-                                                <rect key="frame" x="43.5" y="0.0" width="120" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="BmM-Fq-BfH"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="AUz-tI-hQa" firstAttribute="leading" secondItem="oar-iI-MQL" secondAttribute="leading" constant="210.5" id="dVH-jQ-W61"/>
-                                </constraints>
-                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-ZZ-G4c">
-                                <rect key="frame" x="20" y="241" width="374" height="655"/>
+                                <rect key="frame" x="20" y="261" width="374" height="635"/>
                                 <color key="backgroundColor" red="0.084567657178997307" green="0.55883350493040529" blue="0.66687580958549231" alpha="0.40996368838028169" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LDE-VF-qbM">
                                     <size key="itemSize" width="128" height="128"/>
@@ -333,9 +287,62 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTO-NG-vQP">
+                                <rect key="frame" x="20" y="213" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oar-iI-MQL">
+                                <rect key="frame" x="20" y="168" width="374" height="34"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="zFZ-7z-Uys">
+                                        <rect key="frame" x="0.0" y="0.0" width="186.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYA-fF-GFj">
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="v6n-Hq-d2c">
+                                                <rect key="frame" x="66.5" y="0.0" width="120" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="TVh-XI-8St"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AUz-tI-hQa">
+                                        <rect key="frame" x="210.5" y="0.0" width="163.5" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wld-Fe-F71">
+                                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="18"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pi-Md-jDv">
+                                                <rect key="frame" x="43.5" y="0.0" width="120" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="BmM-Fq-BfH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AUz-tI-hQa" firstAttribute="leading" secondItem="oar-iI-MQL" secondAttribute="leading" constant="210.5" id="dVH-jQ-W61"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.83760597854938101" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="eTO-NG-vQP" secondAttribute="trailing" constant="20" id="1K8-vN-rjz"/>
                             <constraint firstItem="bbg-bj-rFt" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" constant="5" id="3ag-hA-o4W"/>
                             <constraint firstItem="oar-iI-MQL" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="Bvn-tS-JYi"/>
                             <constraint firstItem="bbg-bj-rFt" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="87" id="Cjv-Q6-lwN"/>
@@ -343,16 +350,21 @@
                             <constraint firstItem="cPc-ZZ-G4c" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="FbC-eP-Iqs"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="nnp-z5-AtX" secondAttribute="trailing" constant="25" id="HtR-OR-01S"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="bbg-bj-rFt" secondAttribute="trailing" constant="87" id="M57-6Z-kqe"/>
-                            <constraint firstItem="oar-iI-MQL" firstAttribute="top" secondItem="bbg-bj-rFt" secondAttribute="bottom" constant="8" id="PYA-fR-fOK"/>
-                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="22" id="Suq-e7-P8s"/>
+                            <constraint firstItem="oar-iI-MQL" firstAttribute="top" secondItem="bbg-bj-rFt" secondAttribute="bottom" constant="-9" id="PYA-fR-fOK"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="59" id="Suq-e7-P8s"/>
+                            <constraint firstItem="eTO-NG-vQP" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="UcS-Vx-5GO"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="eTO-NG-vQP" secondAttribute="bottom" constant="27" id="V3P-p0-2H3"/>
                             <constraint firstItem="nnp-z5-AtX" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" id="Xm2-fw-gyb"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="oar-iI-MQL" secondAttribute="trailing" constant="20" id="Y1h-zf-JkU"/>
                             <constraint firstAttribute="bottom" secondItem="cPc-ZZ-G4c" secondAttribute="bottom" id="b1C-ru-Ysf"/>
+                            <constraint firstItem="eTO-NG-vQP" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="11" id="fmn-V1-NAn"/>
                             <constraint firstItem="nnp-z5-AtX" firstAttribute="leading" secondItem="bbg-bj-rFt" secondAttribute="trailing" constant="35" id="uw3-wK-wid"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ywq-Jf-heH"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="cPc-ZZ-G4c" id="2qu-XZ-QYp"/>
+                        <outlet property="errorLabel" destination="eTO-NG-vQP" id="hBO-E4-Qdt"/>
                         <outlet property="tagTextField" destination="1Pi-Md-jDv" id="917-Ju-31c"/>
                         <outlet property="typeTextField" destination="v6n-Hq-d2c" id="c3n-EY-GKO"/>
                     </connections>
