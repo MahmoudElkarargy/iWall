@@ -8,26 +8,86 @@
 
 import UIKit
 import ARKit
+import FirebaseAuth
 
 class FirstViewController: UIViewController {
     //MARK: Outlets and variables.
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var welcomLabel: UILabel!
+    @IBOutlet weak var signingInLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpElments()
     }
-
     override func viewWillAppear(_ animated: Bool) {
-        //Set the video in the background.
-        setUpVideo()
+        loggingScreen()
+        checkFirstLaunch()
     }
-    
+    func loggingScreen(){
+        signUpButton.isHidden = true
+        loginButton.isHidden = true
+        activityIndicator.startAnimating()
+    }
+    //check if the app has launched before.
+    func checkFirstLaunch(){
+        print(UserDefaults.standard.bool(forKey: "isFirstLaunch"))
+        let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        if !isFirstLaunch {
+            //It's not the initial launch of application.
+            print("not first time")
+            //Check if user already signed in?
+            let email = UserDefaults.standard.string(forKey: "savedEmail")
+            print(email)
+            if email != ""{
+                //So, the user is already signed in, get the password and sign in.
+                let password = UserDefaults.standard.string(forKey: "savedPassword")
+                print(password)
+                //login
+                Auth.auth().signIn(withEmail: email!, password: password!) { (result, error) in
+                    if error != nil{
+                        //Couldn't sign in, do nothing and let the user sign manually
+                        print("can't sign in")
+                    }
+                    else{
+                        //Transition to the home screen.
+                        print("Signed in!")
+                        self.TransitionToHome()
+                    }
+                }
+            }
+            else{
+                //Set the video in the background.
+                setUpVideo()
+                //Set up elments.
+                setUpElments()
+            }
+        }
+        else{
+            //Set the video in the background.
+            setUpVideo()
+            //Set up elments.
+            setUpElments()
+        }
+    }
+    func TransitionToHome(){
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoard.homeViewController)
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+    }
     func setUpElments(){
+        //Unhide buttons
+        signUpButton.isHidden = false
+        loginButton.isHidden = false
+        //hide elments
+        welcomLabel.isHidden = true
+        signingInLabel.isHidden = true
+        activityIndicator.stopAnimating()
         //Styling the elments
         Utilities.styleHollowButton(loginButton)
         Utilities.styleFilledButton(signUpButton)
@@ -55,5 +115,8 @@ class FirstViewController: UIViewController {
         view.layer.insertSublayer(videoPlayerLayer!, at: 0)
         //Add it to the view and play it.
         player?.playImmediately(atRate: 0.7)
+    }
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        print("hi?")
     }
 }

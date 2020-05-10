@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        if UserDefaults.standard.bool(forKey: "isFirstLaunch") {
+            UserDefaults.standard.set(false, forKey: "isFirstLaunch")
+            UserDefaults.standard.set("", forKey: "savedEmail")
+            print("not first")
+            UserDefaults.standard.synchronize()
+        } else{
+//            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+            print("first launch")
+        }
         return true
     }
 

@@ -26,11 +26,25 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
-    
+    var ref: DatabaseReference?
+
     //MARK: Override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElments()
+        ref = Database.database().reference()
+        //mnta 3'by
+        ref?.child("users").observe(.childAdded, with: { (snapshot) in
+                          // Get user value
+                            print("yaraaaaaaab: \(snapshot)")
+                          let value = snapshot.value as? NSDictionary
+                            UserData.firstName = value?["firstName"] as? String ?? ""
+                            print("User first name is: \(UserData.firstName)")
+        //                  // ...
+                          }) { (error) in
+                            print(error.localizedDescription)
+                        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         //Set the video in the background.
@@ -121,18 +135,44 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                     self.ShowError(error!.localizedDescription)
                 }
                 else{
-                    //User was created succesfully, now store the first and last name.
+//                    //test this.
+//                    guard let uid = result?.user.uid else {
+//                        print("a7aaa")
+//                        return
+//                    }
+//                    print("h7ot aho")
+//                    let ref = Database.database().reference()
+//                    let userReference = ref.child("users").child(uid)
+//                    let values = ["firstName": firstName, "lastName": lastName, "deviceType": ""]
+//                    userReference.updateChildValues(values) { (error, ref) in
+//                        if error != nil{
+//                            print("bdanyy nek \(error)")
+//                        }
+//                        print("check db")
+//                    }
+//                    User was created succesfully, now store the first and last name.
                     let db = Firestore.firestore()
 
-                    db.collection("users").addDocument(data: [
+                    db.collection("users").document(result!.user.uid).setData([
                         "firstName": firstName,
                         "lastName": lastName,
-                        "uid": result!.user.uid
+                        "deviceType": ""
                     ]) { err in
                         if let err = err {
                             self.ShowError("Error adding user: \(err)")
                         }
                     }
+                    print("wala haga?")
+                    //Write data!
+//                    self.ref!.child("users").child(result!.user.uid).setValue(["firstName": firstName])
+//                    self.ref!.child("users").child(result!.user.uid).setValue(["lastName": lastName])
+//                    self.ref!.child("users").child(result!.user.uid).setValue(["deviceType": ""])
+                    
+                    //test
+                    
+                    //Save the email and password!
+                    UserDefaults.standard.set(email, forKey: "savedEmail")
+                    UserDefaults.standard.set(password, forKey: "savedPassword")
                     //Transition to the home screen.
                     self.setLoggingIn(false)
                     self.TransitionToHome()

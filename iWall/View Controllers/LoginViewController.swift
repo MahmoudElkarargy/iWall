@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import ARKit
+import FirebaseDatabase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: Outlets and variables.
@@ -21,11 +22,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
+    var ref: DatabaseReference?
     
     //MARK: override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
          setUpElments()
+         ref = Database.database().reference()
     }
     override func viewWillAppear(_ animated: Bool) {
         //Set the video in the background.
@@ -97,6 +100,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.ShowError(error!.localizedDescription)
             }
             else{
+                //save user data
+                
+//                let uid = Auth.auth().currentUser
+                let userID = Auth.auth().currentUser?.uid
+                print("uid: \(userID)")
+                self.ref!.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                  // Get user value
+                    print("yaraaaaaaab: \(snapshot)")
+                  let value = snapshot.value as? NSDictionary
+                    UserData.firstName = value?["firstName"] as? String ?? ""
+                    print("User first name is: \(UserData.firstName)")
+//                  // ...
+                  }) { (error) in
+                    print(error.localizedDescription)
+                }
+                
+                //Save the email and password!
+                UserDefaults.standard.set(email, forKey: "savedEmail")
+                UserDefaults.standard.set(password, forKey: "savedPassword")
                 //Transition to the home screen.
                 self.setLoggingIn(false)
                 self.TransitionToHome()

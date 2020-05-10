@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController, UITextFieldDelegate{
     
@@ -16,6 +18,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var ref: DatabaseReference?
     var numberOfImagesToBeLoaded: Int = 0
     var responseGlobal: ImagesSearchResponse?
     var indexOfSelectedImage: Int = 0
@@ -23,9 +26,20 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
 //    var selectedTag: String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //instance of FIRDatabaseReference.
+        ref = Database.database().reference()
         setUpElments()
     }
     func setUpElments(){
+        //init a pickerView.
+        let iPhonePicker = UIPickerView()
+        iPhonePicker.delegate = self
+        
+        //load the selected iphone
+        let selectediPhone = UserDefaults.standard.string(forKey: "savedDevice")
+        if selectediPhone != ""{
+            typeTextField.text = selectediPhone
+        }
         //Hide the error label.
         errorLabel.alpha = 0
         Utilities.styleTextField(typeTextField, placeHolderString: "Select iPhone.")
@@ -34,9 +48,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         tagTextField.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        //init a pickerView.
-        let iPhonePicker = UIPickerView()
-        iPhonePicker.delegate = self
         
         typeTextField.inputView = iPhonePicker
         //Customization
@@ -66,7 +77,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(HomeViewController.dismissKeyboard))
         toolBar.setItems([doneButton], animated: true)
         toolBar.isUserInteractionEnabled = true
-        
         typeTextField.inputAccessoryView = toolBar
     }
     @objc func dismissKeyboard(){
@@ -138,6 +148,9 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         typeTextField.text = IPhoneDevices.devices[row]
+        UserDefaults.standard.set(IPhoneDevices.devices[row], forKey: "savedDevice")
+//        self.ref.child("users").child(user.uid).setValue(["deviceType": IPhoneDevices.devices[row]])
+        
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label: UILabel
