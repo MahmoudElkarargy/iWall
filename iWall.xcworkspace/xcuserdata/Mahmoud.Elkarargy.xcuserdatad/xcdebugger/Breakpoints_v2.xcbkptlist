@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F9656A88-F81C-4C1E-A60F-6F58E54B3088"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5325F90C-774D-457A-B301-F7AAB5F341A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iWall/View Controllers/SignUpViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "signUpTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5325F90C-774D-457A-B301-F7AAB5F341A9 - bd71664b13571286"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iWall.SignUpViewController.signUpTapped(Any) -&gt; ()"
+                  moduleName = "iWall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MahmoudElkarargy/Documents/GitHub/iWall/iWall/View%20Controllers/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "3270">
+               </Location>
+               <Location
+                  uuid = "5325F90C-774D-457A-B301-F7AAB5F341A9 - f5afcbb5b3629c88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in iWall.SignUpViewController.signUpTapped(Any) -&gt; ()"
+                  moduleName = "iWall"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MahmoudElkarargy/Documents/GitHub/iWall/iWall/View%20Controllers/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "370">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

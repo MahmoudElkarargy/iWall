@@ -57,6 +57,11 @@ class UserViewController: UIViewController, UITextFieldDelegate {
             //remove the saved email and password!
             UserDefaults.standard.set("", forKey: "savedEmail")
             UserDefaults.standard.set("", forKey: "savedPassword")
+            //delete the saved UserData.
+            UserData.firstName = ""
+            UserData.lastName = ""
+            UserData.phoneDevice = ""
+            UserData.uid = ""
             //return To First View.
             let firstViewController = self.storyboard?.instantiateViewController(identifier: Constants.StoryBoard.firstViewController)
             self.view.window?.rootViewController = firstViewController

@@ -123,20 +123,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                         print("Error: User isn't added")
                         return
                     }
+                                        
                     //Add the user data to the database.
                     let ref = Database.database().reference()
                     let userReference = ref.child("users").child(uid)
                     let values = ["firstName": firstName, "lastName": lastName, "deviceType": ""]
+                    //Save the userData.
+                    UserData.firstName = firstName
+                    UserData.lastName = lastName
+                    UserData.phoneDevice = ""
+                    UserData.uid = uid
+                    print("New User added to the data base: \(UserData.firstName) \(UserData.lastName) and uid: \(UserData.uid)")
                     userReference.updateChildValues(values) { (error, ref) in
                         if error != nil{
                             print("Error \(error)")
-                        }
-                        //Save the userData.
-                        UserData.firstName = firstName
-                        UserData.lastName = lastName
-                        UserData.phoneDevice = ""
-                        UserData.uid = uid
-                        print("New User added to the data base: \(UserData.firstName) \(UserData.lastName) and uid: \(UserData.uid)")
+                        }                       
                     }
                     //Save the email and password!
                     UserDefaults.standard.set(email, forKey: "savedEmail")

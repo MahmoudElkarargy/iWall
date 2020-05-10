@@ -6,6 +6,9 @@
 //  Copyright © 2020 Mahmoud Elkarargy. All rights reserved.
 //
 
+//TODO: 1- remove listners in viewWilldisaper.
+
+
 import UIKit
 import Firebase
 

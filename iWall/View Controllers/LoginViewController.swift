@@ -22,6 +22,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
+    fileprivate var _refHandle: DatabaseHandle!
+    fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
+    var user: User!
     
     //MARK: override funcs.
     override func viewDidLoad() {
@@ -29,8 +32,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUpElments()
     }
     override func viewWillAppear(_ animated: Bool) {
+        //create listner for changes in Authorization state.
+        configureAuth()
         //Set the video in the background.
-       setUpVideo()
+        setUpVideo()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //if return is pressed resign first responder to hide keyboard
@@ -39,6 +44,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     //MARK: Setup funcs.
+    func configureAuth(){
+        _authHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            print("when did I call?")
+            //check if there's a current user.
+            if let activeUser = user{
+                //Check if the current app user is the FIRUser.
+                if self.user != activeUser{
+                    self.user = activeUser
+                }
+            }
+            else{
+                //User must login in.
+            }
+        }
+    }
     func setUpElments(){
         //Hide the error label.
         errorLabel.alpha = 0
