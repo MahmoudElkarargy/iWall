@@ -25,7 +25,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     var numberOfPage: Int = 1
     var responseGlobal: ImagesSearchResponse?
     var indexOfSelectedImage: Int = 0
-    
+    static var isPhotoLiked: Bool = false
+    var timer: Timer?
     //MARK: Override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,14 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             }) { (error) in
                 print(error.localizedDescription)
             }
+        timer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            // check if any Photo has been liked
+            print("ayphh: \(HomeViewController.isPhotoLiked)")
+            if HomeViewController.isPhotoLiked{
+                self.collectionView.reloadData()
+                HomeViewController.isPhotoLiked = false
+            }
+        }
         setUpElments()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -72,7 +81,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             typeTextField.text = selectediPhone
         }
     }
-    
+    //To be called when user liked a photo.
+    static func calledFromImageSelectedView(){
+        isPhotoLiked = true
+    }
     func setUpElments(){
         //load the selected iphone
         setUpSelectedDevice()
@@ -246,6 +258,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.activityIndicator.stopAnimating()
             //UnHide next button.
             self.nextButton.isHidden = false
+        }
+        let imageURL = responseGlobal?.hits[indexPath.row].largeImageURL
+        print("Checking the url: \(imageURL)")
+        if UserData.photos.contains(imageURL!){
+            //the user has liked this image.
+            cell.loveImage.image = UIImage(named: "liked")!
+        }else{
+            cell.loveImage.image = UIImage(named: "love")!
         }
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 0.5

@@ -62,6 +62,7 @@ class UserViewController: UIViewController, UITextFieldDelegate {
             UserData.lastName = ""
             UserData.phoneDevice = ""
             UserData.uid = ""
+            UserData.photos.removeAll()
             //return To First View.
             let firstViewController = self.storyboard?.instantiateViewController(identifier: Constants.StoryBoard.firstViewController)
             self.view.window?.rootViewController = firstViewController

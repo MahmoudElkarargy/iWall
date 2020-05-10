@@ -9,7 +9,8 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
+    //MARK: Outlets and vars.
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var cellLabel: UILabel!
-    
+    @IBOutlet weak var loveImage: UIImageView!
 }
