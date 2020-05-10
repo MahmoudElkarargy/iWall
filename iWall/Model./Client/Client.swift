@@ -19,12 +19,12 @@ class Client{
     enum EndPoints{
         static let base = "https://pixabay.com/api/?key=" + Auth.key
 
-        case searchImages(tag: String, minWidth: Int, minHeight: Int)
+        case searchImages(tag: String, minWidth: Int, minHeight: Int, page: Int)
         var stringValue: String{
             switch self {
-            case .searchImages(let tag, let minWidth, let minHeight):
+            case .searchImages(let tag, let minWidth, let minHeight, let page):
                 return EndPoints.base + "&q=iPhone+\(tag)" + "&min_width=\(minWidth)&min_height=\(minHeight)"
-                        + "&per_page=10&page=1&image_type=photo"
+                        + "&per_page=10&page=\(page)&image_type=photo"
             }
         }
         var url: URL {
@@ -34,11 +34,11 @@ class Client{
     }
 
     // MARK: Get Search Data.
-    class func getPhotosSearchResult(tag: String, minWidth:Int, minHeight:Int ,completionHandler: @escaping (ImagesSearchResponse?, Error?) -> Void){
+    class func getPhotosSearchResult(tag: String, minWidth:Int, minHeight:Int ,page:Int,completionHandler: @escaping (ImagesSearchResponse?, Error?) -> Void){
         
         let q = DispatchQueue.global(qos: .userInteractive)
         q.async {
-            let task = URLSession.shared.dataTask(with: EndPoints.searchImages(tag: tag, minWidth: minWidth, minHeight: minHeight).url) { data, response, error in
+            let task = URLSession.shared.dataTask(with: EndPoints.searchImages(tag: tag, minWidth: minWidth, minHeight: minHeight, page: page).url) { data, response, error in
                 guard let data = data else {
                     DispatchQueue.main.async {
                         completionHandler(nil, error)

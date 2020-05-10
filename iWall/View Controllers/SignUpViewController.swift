@@ -26,25 +26,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
-    var ref: DatabaseReference?
 
     //MARK: Override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElments()
-        ref = Database.database().reference()
-        //mnta 3'by
-        ref?.child("users").observe(.childAdded, with: { (snapshot) in
-                          // Get user value
-                            print("yaraaaaaaab: \(snapshot)")
-                          let value = snapshot.value as? NSDictionary
-                            UserData.firstName = value?["firstName"] as? String ?? ""
-                            print("User first name is: \(UserData.firstName)")
-        //                  // ...
-                          }) { (error) in
-                            print(error.localizedDescription)
-                        }
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         //Set the video in the background.
@@ -82,14 +68,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         let item = AVPlayerItem(url: url)
         //Create the player.
         player = AVQueuePlayer()
-
         //Create the layer.
         videoPlayerLayer = AVPlayerLayer(player: player!)
-        
         let duration = Int64( ( (Float64(CMTimeGetSeconds(AVAsset(url: url).duration)) *  10.0) - 1) / 10.0 )
-        
+        //create a loop.
         playerLooper = AVPlayerLooper(player: player!, templateItem: item, timeRange: CMTimeRange(start: CMTime.zero, end: CMTimeMake(value: duration, timescale: 1)) )
-        
         //Adjust the size and frame.
         videoPlayerLayer?.frame = CGRect(x: -self.view.frame.size.width*0.3, y: 0, width: self.view.frame.size.width*1.5, height: self.view.frame.size.height)
         view.layer.insertSublayer(videoPlayerLayer!, at: 0)
@@ -135,41 +118,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                     self.ShowError(error!.localizedDescription)
                 }
                 else{
-//                    //test this.
-//                    guard let uid = result?.user.uid else {
-//                        print("a7aaa")
-//                        return
-//                    }
-//                    print("h7ot aho")
-//                    let ref = Database.database().reference()
-//                    let userReference = ref.child("users").child(uid)
-//                    let values = ["firstName": firstName, "lastName": lastName, "deviceType": ""]
-//                    userReference.updateChildValues(values) { (error, ref) in
-//                        if error != nil{
-//                            print("bdanyy nek \(error)")
-//                        }
-//                        print("check db")
-//                    }
-//                    User was created succesfully, now store the first and last name.
-                    let db = Firestore.firestore()
-
-                    db.collection("users").document(result!.user.uid).setData([
-                        "firstName": firstName,
-                        "lastName": lastName,
-                        "deviceType": ""
-                    ]) { err in
-                        if let err = err {
-                            self.ShowError("Error adding user: \(err)")
-                        }
+                    //User was created succesfully, now store the first and last name.
+                    guard let uid = result?.user.uid else {
+                        print("Error: User isn't added")
+                        return
                     }
-                    print("wala haga?")
-                    //Write data!
-//                    self.ref!.child("users").child(result!.user.uid).setValue(["firstName": firstName])
-//                    self.ref!.child("users").child(result!.user.uid).setValue(["lastName": lastName])
-//                    self.ref!.child("users").child(result!.user.uid).setValue(["deviceType": ""])
-                    
-                    //test
-                    
+                    //Add the user data to the database.
+                    let ref = Database.database().reference()
+                    let userReference = ref.child("users").child(uid)
+                    let values = ["firstName": firstName, "lastName": lastName, "deviceType": ""]
+                    userReference.updateChildValues(values) { (error, ref) in
+                        if error != nil{
+                            print("Error \(error)")
+                        }
+                        //Save the userData.
+                        UserData.firstName = firstName
+                        UserData.lastName = lastName
+                        UserData.phoneDevice = ""
+                        UserData.uid = uid
+                        print("New User added to the data base: \(UserData.firstName) \(UserData.lastName) and uid: \(UserData.uid)")
+                    }
                     //Save the email and password!
                     UserDefaults.standard.set(email, forKey: "savedEmail")
                     UserDefaults.standard.set(password, forKey: "savedPassword")
@@ -211,6 +179,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         errorLabel.text = message
         errorLabel.alpha = 1
     }
+    //Send the user to home view.
     func TransitionToHome(){
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoard.homeViewController)
         view.window?.rootViewController = homeViewController

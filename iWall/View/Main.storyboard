@@ -278,6 +278,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9Ou-G9-3gc">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-bj-rFt">
                                 <rect key="frame" x="87" y="49" width="240" height="128"/>
                                 <constraints>
@@ -285,7 +288,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cPc-ZZ-G4c">
-                                <rect key="frame" x="20" y="261" width="374" height="635"/>
+                                <rect key="frame" x="20" y="281" width="374" height="615"/>
                                 <color key="backgroundColor" red="0.1378522163762019" green="0.14701467578576743" blue="0.16161983988934014" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="LDE-VF-qbM">
                                     <size key="itemSize" width="181" height="293"/>
@@ -354,12 +357,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTO-NG-vQP">
-                                <rect key="frame" x="20" y="221" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="oar-iI-MQL">
                                 <rect key="frame" x="20" y="168" width="374" height="34"/>
                                 <subviews>
@@ -419,32 +416,62 @@
                                     <segue destination="JiY-6s-Ub0" kind="show" id="R1G-it-fow"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="iZf-7Z-2DC">
+                                <rect key="frame" x="37.5" y="222" width="339" height="39"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="eTO-NG-vQP">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="TV0-Cp-krQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TamilSangamMN" family="Tamil Sangam MN" pointSize="20"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGP-jq-BwE">
+                                        <rect key="frame" x="280" y="0.0" width="59" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="59" id="HeV-sr-kPW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="24"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextTapped:" destination="Rqf-gp-XVW" eventType="touchUpInside" id="8JP-fn-S2x"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="eTO-NG-vQP" secondAttribute="trailing" constant="20" id="1K8-vN-rjz"/>
                             <constraint firstItem="bbg-bj-rFt" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" constant="5" id="3ag-hA-o4W"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="iZf-7Z-2DC" secondAttribute="bottom" constant="20" id="9fX-7P-tYt"/>
                             <constraint firstItem="oar-iI-MQL" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="Bvn-tS-JYi"/>
                             <constraint firstItem="bbg-bj-rFt" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="87" id="Cjv-Q6-lwN"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="cPc-ZZ-G4c" secondAttribute="trailing" constant="20" id="DQi-9N-le4"/>
                             <constraint firstItem="cPc-ZZ-G4c" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="FbC-eP-Iqs"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="bbg-bj-rFt" secondAttribute="trailing" constant="87" id="M57-6Z-kqe"/>
                             <constraint firstItem="oar-iI-MQL" firstAttribute="top" secondItem="bbg-bj-rFt" secondAttribute="bottom" constant="-9" id="PYA-fR-fOK"/>
-                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="59" id="Suq-e7-P8s"/>
-                            <constraint firstItem="eTO-NG-vQP" firstAttribute="leading" secondItem="ywq-Jf-heH" secondAttribute="leading" constant="20" id="UcS-Vx-5GO"/>
-                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="eTO-NG-vQP" secondAttribute="bottom" constant="19" id="V3P-p0-2H3"/>
+                            <constraint firstItem="cPc-ZZ-G4c" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="79" id="Suq-e7-P8s"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="oar-iI-MQL" secondAttribute="trailing" constant="20" id="Y1h-zf-JkU"/>
+                            <constraint firstItem="iZf-7Z-2DC" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="20" id="Y3p-76-Ybw"/>
                             <constraint firstItem="Bxc-nm-OC1" firstAttribute="top" secondItem="ywq-Jf-heH" secondAttribute="top" constant="30" id="aLz-Fc-qsZ"/>
                             <constraint firstAttribute="bottom" secondItem="cPc-ZZ-G4c" secondAttribute="bottom" id="b1C-ru-Ysf"/>
-                            <constraint firstItem="eTO-NG-vQP" firstAttribute="top" secondItem="oar-iI-MQL" secondAttribute="bottom" constant="19" id="fmn-V1-NAn"/>
+                            <constraint firstItem="iZf-7Z-2DC" firstAttribute="centerX" secondItem="Ag3-E0-lVe" secondAttribute="centerX" id="gpd-T8-gjM"/>
+                            <constraint firstItem="9Ou-G9-3gc" firstAttribute="centerY" secondItem="Ag3-E0-lVe" secondAttribute="centerY" id="kVZ-hP-NOp"/>
                             <constraint firstItem="ywq-Jf-heH" firstAttribute="trailing" secondItem="Bxc-nm-OC1" secondAttribute="trailing" constant="20" id="mRe-Rt-7m1"/>
+                            <constraint firstItem="9Ou-G9-3gc" firstAttribute="centerX" secondItem="Ag3-E0-lVe" secondAttribute="centerX" id="oAJ-za-cLj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ywq-Jf-heH"/>
                     </view>
                     <navigationItem key="navigationItem" id="aGc-0F-wYj"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="9Ou-G9-3gc" id="D0z-x7-8aR"/>
                         <outlet property="collectionView" destination="cPc-ZZ-G4c" id="2qu-XZ-QYp"/>
                         <outlet property="errorLabel" destination="eTO-NG-vQP" id="hBO-E4-Qdt"/>
+                        <outlet property="nextButton" destination="cGP-jq-BwE" id="bbw-WA-Ca5"/>
                         <outlet property="tagTextField" destination="1Pi-Md-jDv" id="917-Ju-31c"/>
                         <outlet property="typeTextField" destination="v6n-Hq-d2c" id="c3n-EY-GKO"/>
                         <segue destination="ZcF-aZ-26e" kind="show" identifier="selectedImageSegue" id="VBA-aP-hMY"/>
@@ -603,7 +630,6 @@
                                 <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="20"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="backButtonTapped:" destination="ZcF-aZ-26e" eventType="touchUpInside" id="HiN-ga-Nl9"/>
                                     <action selector="backTapped:" destination="JiY-6s-Ub0" eventType="touchUpInside" id="5NQ-rv-jDf"/>
                                 </connections>
                             </button>
@@ -615,7 +641,6 @@
                                 <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="20"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
-                                    <action selector="backButtonTapped:" destination="ZcF-aZ-26e" eventType="touchUpInside" id="o7e-kp-yLg"/>
                                     <action selector="logoutTapped:" destination="JiY-6s-Ub0" eventType="touchUpInside" id="8ia-Qw-ITw"/>
                                 </connections>
                             </button>
@@ -727,7 +752,7 @@
                                 <fontDescription key="fontDescription" name="TamilSangamMN-Bold" family="Tamil Sangam MN" pointSize="20"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="backButtonTapped:" destination="ZcF-aZ-26e" eventType="touchUpInside" id="Xw1-EF-8gk"/>
+                                    <action selector="backButtonTapped:" destination="ZcF-aZ-26e" eventType="touchUpInside" id="jLT-T2-OOc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArP-El-Zj1">
@@ -737,7 +762,13 @@
                                     <constraint firstAttribute="height" constant="38" id="odT-C3-bS1"/>
                                 </constraints>
                                 <state key="normal" image="download"/>
+                                <connections>
+                                    <action selector="downloadImageTapped:" destination="ZcF-aZ-26e" eventType="touchUpInside" id="Hha-p9-DdR"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LVF-OQ-9V8">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
@@ -750,7 +781,9 @@
                             <constraint firstItem="hlT-51-Fso" firstAttribute="top" secondItem="v5x-hF-tEk" secondAttribute="top" constant="5" id="Ioh-Td-d0b"/>
                             <constraint firstItem="pHt-dW-3Ol" firstAttribute="top" secondItem="rOn-Ys-oFG" secondAttribute="bottom" constant="35" id="J8f-VY-cX7"/>
                             <constraint firstItem="v5x-hF-tEk" firstAttribute="bottom" secondItem="pHt-dW-3Ol" secondAttribute="bottom" constant="34" id="K06-dk-i6L"/>
+                            <constraint firstItem="LVF-OQ-9V8" firstAttribute="centerY" secondItem="zP6-s7-ZRa" secondAttribute="centerY" id="MoD-C9-YxX"/>
                             <constraint firstItem="hlT-51-Fso" firstAttribute="leading" secondItem="v5x-hF-tEk" secondAttribute="leading" constant="87" id="N1f-yH-8qn"/>
+                            <constraint firstItem="LVF-OQ-9V8" firstAttribute="centerX" secondItem="zP6-s7-ZRa" secondAttribute="centerX" id="fDU-ch-kiU"/>
                             <constraint firstItem="ArP-El-Zj1" firstAttribute="top" secondItem="v5x-hF-tEk" secondAttribute="top" constant="21" id="itj-0Q-Fbo"/>
                             <constraint firstItem="v5x-hF-tEk" firstAttribute="trailing" secondItem="hlT-51-Fso" secondAttribute="trailing" constant="87" id="su0-zm-X7m"/>
                             <constraint firstItem="8pc-aW-K8w" firstAttribute="top" secondItem="v5x-hF-tEk" secondAttribute="top" constant="30" id="xwc-R6-Lsu"/>
@@ -761,10 +794,12 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="pbo-rD-G4k"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="LVF-OQ-9V8" id="BsL-Lm-5fp"/>
                         <outlet property="backButton" destination="8pc-aW-K8w" id="BgR-8L-FZW"/>
                         <outlet property="imageTag" destination="cMH-Q5-1Ii" id="SU4-pU-720"/>
                         <outlet property="imageview" destination="rOn-Ys-oFG" id="mfI-q6-DJU"/>
                         <outlet property="likedImage" destination="HYP-cv-m9X" id="FbD-jJ-eJU"/>
+                        <outlet property="shareButton" destination="ArP-El-Zj1" id="LN5-Db-WX4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jds-eP-kzq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

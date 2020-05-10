@@ -22,13 +22,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var videoPlayerLayer: AVPlayerLayer?
     private var playerLooper: AVPlayerLooper?
     private var player: AVQueuePlayer?
-    var ref: DatabaseReference?
     
     //MARK: override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
-         setUpElments()
-         ref = Database.database().reference()
+        setUpElments()
     }
     override func viewWillAppear(_ animated: Bool) {
         //Set the video in the background.
@@ -100,22 +98,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.ShowError(error!.localizedDescription)
             }
             else{
-                //save user data
-                
-//                let uid = Auth.auth().currentUser
-                let userID = Auth.auth().currentUser?.uid
-                print("uid: \(userID)")
-                self.ref!.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                  // Get user value
-                    print("yaraaaaaaab: \(snapshot)")
-                  let value = snapshot.value as? NSDictionary
-                    UserData.firstName = value?["firstName"] as? String ?? ""
-                    print("User first name is: \(UserData.firstName)")
-//                  // ...
-                  }) { (error) in
-                    print(error.localizedDescription)
-                }
-                
+                //Save the user uid.
+                UserData.uid = result?.user.uid as! String
+                print("User uid: \(UserData.uid)")
                 //Save the email and password!
                 UserDefaults.standard.set(email, forKey: "savedEmail")
                 UserDefaults.standard.set(password, forKey: "savedPassword")
@@ -135,6 +120,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
+    //Send user to the main home view.
     func TransitionToHome(){
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoard.homeViewController)
         view.window?.rootViewController = homeViewController
