@@ -54,9 +54,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.user = activeUser
                 }
             }
-            else{
-                //User must login in.
-            }
         }
     }
     func setUpElments(){

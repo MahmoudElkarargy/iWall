@@ -24,6 +24,8 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Override funcs.
     override func viewDidLoad() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
         //instance of FIRDatabaseReference.
         ref = Database.database().reference()
         super.viewDidLoad()
@@ -103,4 +105,39 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
+}
+
+//MARK: CollectionView extension.
+extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LikesCollectionViewCell
+        //Setting up the cell.
+        cell.imageView.image = UIImage(named: "placeholderImage")!
+        
+        print("index tmam? \(UserData.photosStorageURL[0])")
+        //Downloading and display image from storage.
+        Storage.storage().reference(forURL: UserData.photosStorageURL[0]).getData(maxSize: INT64_MAX) { (data, error) in
+            guard error == nil else{
+                print("Error downloading! \(error)")
+                return
+            }
+            //Check if the cell still on screen, if so, update it!
+            if cell == collectionView.cellForItem(at: indexPath){
+                DispatchQueue.main.async {
+                    //Display image.
+                    cell.imageView.image = UIImage(data: data!)
+                    cell.setNeedsLayout()
+                }
+            }
+        }
+        
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 10
+        return cell
+    }
+    
 }

@@ -21,6 +21,7 @@ class ImageSelectedViewController: UIViewController {
     var labelText: String!
     var isfirstCliked = true
     var storageRef: StorageReference!
+    var ref: DatabaseReference?
     //MARK: Override functions.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class ImageSelectedViewController: UIViewController {
         let storage = Storage.storage()
         // Create a storage reference from our storage service
         storageRef = storage.reference()
+        //instance of FIRDatabaseReference.
+        ref = Database.database().reference()
         //Set the image text.
         imageTag.text = labelText
         //Set the image to placeholder image.
@@ -119,12 +122,13 @@ class ImageSelectedViewController: UIViewController {
         metedata.contentType = "image/jpeg"
         //create the child node at imagePath with photoData and metaData.
         storageRef!.child(imagePath).putData(photoData, metadata: metedata) { (metadata, error) in
-        guard let error = error else {
-          //an error occurred!
-            print("ERROROROROORRO")
-          return
+            guard let error = error else {
+                //an error occurred!
+                print("ERROROROROORRO")
+                return
+            }
         }
-            
-        }
+        //Add it to the dataBase.
+        self.ref!.child("users/\(UserData.uid)/photos").setValue(self.storageRef!.child((metedata.path)!).description)
     }
 }

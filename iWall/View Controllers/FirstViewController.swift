@@ -87,8 +87,10 @@ class FirstViewController: UIViewController {
                 //login
                 Auth.auth().signIn(withEmail: email!, password: password!) { (result, error) in
                     if error != nil{
-                        //Couldn't sign in, do nothing and let the user sign manually
+                        //Couldn't sign in, delete the savedEmail and let the user sigin in manually
                         print("can't sign in")
+                        UserDefaults.standard.set("", forKey: "savedEmail")
+                        self.checkFirstLaunch()
                     }
                     else{
                         //Save the user uid.

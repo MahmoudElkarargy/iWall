@@ -46,7 +46,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             UserData.firstName = value?["firstName"] as? String ?? ""
             UserData.lastName = value?["lastName"] as? String ?? ""
             UserData.phoneDevice = value?["deviceType"] as? String ?? ""
+            //save all the liked photos urls.
+            UserData.photosStorageURL.append(value?["photos"] as? String ?? "")
             print("Now user is: \(UserData.firstName) \(UserData.lastName) and his device: \(UserData.phoneDevice)")
+            print("User already have a photos: \(UserData.photosStorageURL)")
             //Set the device.
             self.setUpSelectedDevice()
             if UserData.phoneDevice != ""{
@@ -59,7 +62,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             }
         timer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             // check if any Photo has been liked
-            print("ayphh: \(HomeViewController.isPhotoLiked)")
             if HomeViewController.isPhotoLiked{
                 self.collectionView.reloadData()
                 HomeViewController.isPhotoLiked = false

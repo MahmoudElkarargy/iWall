@@ -19,6 +19,7 @@
 		D6828679246727E000CDCCB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6828678246727E000CDCCB5 /* Main.storyboard */; };
 		D6A043442467BA1E00299E59 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A043432467BA1E00299E59 /* UserData.swift */; };
 		D6B09AE02466600700220EFC /* IPhoneDevices..swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B09ADF2466600700220EFC /* IPhoneDevices..swift */; };
+		D6BAAC1C2468BF9800940922 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAAC1B2468BF9800940922 /* LikesCollectionViewCell.swift */; };
 		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
 		D6CA0DED2465D24000826D05 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA0DEC2465D24000826D05 /* Client.swift */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		D6828678246727E000CDCCB5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D6A043432467BA1E00299E59 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		D6B09ADF2466600700220EFC /* IPhoneDevices..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneDevices..swift; sourceTree = "<group>"; };
+		D6BAAC1B2468BF9800940922 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6CA0DEC2465D24000826D05 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D6FD63992464C62400F7823C /* iWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				D627D21C24651BE00085BF20 /* Movies */,
 				D60701642464D30300D934BB /* Helpers */,
 				D6828674246722D800CDCCB5 /* CollectionViewCell.swift */,
+				D6BAAC1B2468BF9800940922 /* LikesCollectionViewCell.swift */,
 				D6FD63A52464C62900F7823C /* Assets.xcassets */,
 				D6FD63A72464C62900F7823C /* LaunchScreen.storyboard */,
 				D6828678246727E000CDCCB5 /* Main.storyboard */,
@@ -329,6 +332,7 @@
 				D6FD63BB2464D27100F7823C /* Utilities.swift in Sources */,
 				D6FD63B12464C79300F7823C /* SignUpViewController.swift in Sources */,
 				D6FD63B32464C7B900F7823C /* LoginViewController.swift in Sources */,
+				D6BAAC1C2468BF9800940922 /* LikesCollectionViewCell.swift in Sources */,
 				D630C5AB24676C9500DC65FC /* UserViewController.swift in Sources */,
 				D6A043442467BA1E00299E59 /* UserData.swift in Sources */,
 				D6FD639F2464C62400F7823C /* SceneDelegate.swift in Sources */,
