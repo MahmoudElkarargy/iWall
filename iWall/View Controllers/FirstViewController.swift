@@ -80,7 +80,7 @@ class FirstViewController: UIViewController {
             //Check if user already signed in?
             let email = UserDefaults.standard.string(forKey: "savedEmail")
             print(email)
-            if email != ""{
+            if email != "" && email != nil{
                 //So, the user is already signed in, get the password and sign in.
                 let password = UserDefaults.standard.string(forKey: "savedPassword")
                 print(password)

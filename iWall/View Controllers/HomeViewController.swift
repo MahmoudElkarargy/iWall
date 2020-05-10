@@ -174,7 +174,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 numberOfImagesToBeLoaded = response!.total
                 totalnumberOfPages = 1
             }
-            ShowMessage("Showing \(numberOfImagesToBeLoaded*numberOfPage) of \(response!.total)", false)
+            ShowMessage("Showing \(numberOfImagesToBeLoaded*numberOfPage) of \(response!.total) images.", false)
             collectionView.reloadData()
         }
         else{
@@ -183,13 +183,15 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     }
     //MARK: IBAction funcs.
     @IBAction func nextTapped(_ sender: Any) {
-        print("eh f eh \(totalnumberOfPages) ha? ")
         //Still there's more images to search.
         if numberOfPage < totalnumberOfPages{
             //increment to search again.
             numberOfPage = numberOfPage + 1
             //Search for imgs.
             prepareForSearch()
+        }
+        else {
+            nextButton.isHidden = true
         }
     }
 }
