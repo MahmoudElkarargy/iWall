@@ -22,6 +22,8 @@ class ImageSelectedViewController: UIViewController {
     var isfirstCliked = true
     var storageRef: StorageReference!
     var ref: DatabaseReference?
+    var numberOfSavedImages: Int = 0
+    
     //MARK: Override functions.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,9 +63,6 @@ class ImageSelectedViewController: UIViewController {
         if isfirstCliked{
             likedImage.setImage(UIImage(named: "liked"), for: .normal)
             isfirstCliked = !isfirstCliked
-            //Adding the liked image URL.
-            UserData.photos.append(imageURL)
-            print("Now liked images urls: \(UserData.photos)")
             //transform the photo into data
             let photoData = imageview.image!.jpegData(compressionQuality: 0.8)
             //Call the function to upload photo in the storage.
@@ -129,6 +128,11 @@ class ImageSelectedViewController: UIViewController {
             }
         }
         //Add it to the dataBase.
-        self.ref!.child("users/\(UserData.uid)/photos").setValue(self.storageRef!.child((metedata.path)!).description)
+        numberOfSavedImages = UserData.photos.count
+        print("yabaaaaaaaaaa\(numberOfSavedImages)")
+        
+        self.ref!.child("users/\(UserData.uid)/photo\(numberOfSavedImages)").setValue(self.storageRef!.child((metedata.path)!).description)
+        self.ref!.child("users/\(UserData.uid)/photoURL\(numberOfSavedImages)").setValue(imageURL)
+        print("Check data Base!")
     }
 }

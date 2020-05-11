@@ -27,6 +27,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     var indexOfSelectedImage: Int = 0
     static var isPhotoLiked: Bool = false
     var timer: Timer?
+    
+    
     //MARK: Override funcs.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +38,45 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         self.activityIndicator.startAnimating()
         //Hide next button.
         nextButton.isHidden = true
+        addDatabaseListener()
+        startTimer()
+        setUpElments()
+    }
+    func addDatabaseListener(){
         //instance of FIRDatabaseReference.
         ref = Database.database().reference()
         //Add listner.
         ref?.child("users").child(UserData.uid).observe(.value, with: { (snapshot) in
+            
             print("snapShot: \(snapshot)")
             // Get user value
             let value = snapshot.value as? NSDictionary
+            
             UserData.firstName = value?["firstName"] as? String ?? ""
             UserData.lastName = value?["lastName"] as? String ?? ""
             UserData.phoneDevice = value?["deviceType"] as? String ?? ""
-            //save all the liked photos urls.
-            UserData.photosStorageURL.append(value?["photos"] as? String ?? "")
             print("Now user is: \(UserData.firstName) \(UserData.lastName) and his device: \(UserData.phoneDevice)")
-            print("User already have a photos: \(UserData.photosStorageURL)")
+            
+            //Check if there's photo saved, by counting number of childs.
+            print("now child: \(snapshot.childrenCount)")
+            //make sure it's trigged after adding the store path and URL
+            if snapshot.childrenCount > 3 && snapshot.childrenCount % 2 != 0 {
+                //sub. the first 3 child's and then divide by 2.
+                let numberOfimages = (snapshot.childrenCount-3)/2
+                print("Acutal nb of image: \(numberOfimages)")
+                //delete all saved data before adding new.
+                UserData.photos.removeAll()
+                UserData.photosStorageURL.removeAll()
+                //Loop to add both Storage path and image url in the UserData.
+                for photos in 0...numberOfimages-1{
+                    UserData.photosStorageURL.append(value?["photo\(photos)"] as? String ?? "")
+                    print("User \(photos) photo storagePath: \(UserData.photosStorageURL[Int(photos)])")
+                    
+                    UserData.photos.append(value?["photoURL\(photos)"] as? String ?? "")
+                    print("User \(photos) photo URL: \(UserData.photos[Int(photos)])")
+                    
+                }
+            }
             //Set the device.
             self.setUpSelectedDevice()
             if UserData.phoneDevice != ""{
@@ -60,6 +87,8 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             }) { (error) in
                 print(error.localizedDescription)
             }
+    }
+    func startTimer(){
         timer =  Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             // check if any Photo has been liked
             if HomeViewController.isPhotoLiked{
@@ -67,7 +96,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 HomeViewController.isPhotoLiked = false
             }
         }
-        setUpElments()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //if return is pressed resign first responder to hide keyboard
@@ -262,7 +290,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.nextButton.isHidden = false
         }
         let imageURL = responseGlobal?.hits[indexPath.row].largeImageURL
-        print("Checking the url: \(imageURL)")
+        print("Checking the url!: \(imageURL)")
+        print("Userd data... \( UserData.photos)")
         if UserData.photos.contains(imageURL!){
             //the user has liked this image.
             cell.loveImage.image = UIImage(named: "liked")!

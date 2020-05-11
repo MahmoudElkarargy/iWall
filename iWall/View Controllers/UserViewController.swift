@@ -110,16 +110,17 @@ class UserViewController: UIViewController, UITextFieldDelegate {
 //MARK: CollectionView extension.
 extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        print("UserData.photos.count: \(UserData.photos.count) and \(UserData.photosStorageURL.count)")
+        return UserData.photosStorageURL.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! LikesCollectionViewCell
         //Setting up the cell.
         cell.imageView.image = UIImage(named: "placeholderImage")!
         
-        print("index tmam? \(UserData.photosStorageURL[0])")
+        print("index tmam? \(indexPath.row)")
         //Downloading and display image from storage.
-        Storage.storage().reference(forURL: UserData.photosStorageURL[0]).getData(maxSize: INT64_MAX) { (data, error) in
+        Storage.storage().reference(forURL: UserData.photosStorageURL[indexPath.row]).getData(maxSize: INT64_MAX) { (data, error) in
             guard error == nil else{
                 print("Error downloading! \(error)")
                 return

@@ -28,7 +28,7 @@ class Client{
             }
         }
         var url: URL {
-            print("URL: \(stringValue)")
+//            print("URL: \(stringValue)")
             return URL(string: stringValue)!
         }
     }
