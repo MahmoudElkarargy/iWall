@@ -6,7 +6,7 @@ An app that offers you hundreds of pictures for your device. Sign up now and dow
 
 iWall is an application that offers you a great variety of High-quality photos for your iPhone device. 
 After signing up on the application, user selects his device and can easily search for specific collections.
-Also, adding photos to his like list, share it and save it!
+Also, he can add photos to his like list, share a photo and save it!
 
 ## This project focused on:
 * Design and build an app from the ground up.
@@ -28,25 +28,25 @@ iWall is following the MVC pattern.
 </p>
 
 ## Login Screen
-- Allows the user to log in using their email and password. 
+- Allows the user to log in using their Email and password. 
 - Authenticate is done through Firebase Authenticate. 
-- If the login does not succeed, an alert is presented specifying whether it was a failed network connection, or an incorrect email and password. Also, It’s animated with a background video. 
+- If the login does not succeed, an alert is presented specifying whether it was a failed network connection, or an incorrect Email and password. Also, It’s animated with a background video. 
 <p align="center">
   <img src="images/login.png">
 </p>
 
 ## Sign up Screen
-- Gives users the ability to sign up with email and password, Pick his first and last name. 
+- Gives users the ability to sign up with Email and password, Pick his first and last name. 
 - If the email is already regiestered with another account an alert is displayed.
-- Email and password validation is added where password must be at least 6 charcters, contains a special character and a number. It’s also animated with a background video.
+- Email and password validation is added. Where password must be at least 6 charcters, contains a special character and a number. It’s also animated with a background video.
 <p align="center">
   <img src="images/signupView.png">
 </p>
 
 ## Home Screen
 ### Device Select
-- If user first time launching the App, He must select a device in order to perfourm search.
-- If user already did a search before, He will found his device selcted as it's stored in Firebase Database.
+- If it's the user first time to launch the App, He must select a device in order to perfourm search.
+- If user already did a search before, He will found his device selected as it's stored in Firebase Database.
 <p align="center">
   <img src="images/selectedDev.png">
 </p>
@@ -68,7 +68,7 @@ iWall is following the MVC pattern.
 ## Likes List Screen
 - User can see all of his likes by tapping on the user icon.
 - All liked images are stored in Firebase Storage. So, whenever a user login in any device anywhere he will found all his data saved and secured.
-- Also, By tapping the like button agian the image will be unlicked and will be removed from Firebase Storage.
+- Also, By tapping the like button again the image will be un-licked and will be removed from Firebase Storage.
 <p align="center">
   <img src="images/listLikes.png">
 </p>
@@ -80,7 +80,7 @@ iWall is following the MVC pattern.
 </p>
 
 ## Persistent State.
-- The App saves the user's data (email, password, device). So, when he re-launched the App this view will appear as it's automatically logging him to the account and Firebase server.
+- The App saves the user's data (email, password, device). So, when he re-launched the App this view will appear as it's automatically logging him to his account.
 - The Main view won't appear as the user isn't asked to signin or signup, if there's a failed network connection the user will be re-moved to the Main View.
 - After loggin, The User will be directed back to his Home view.
 - Once oppening, the user data will be fetched from the Firebase database. So, the user will found his liked images and his name saved.
@@ -93,3 +93,4 @@ iWall is following the MVC pattern.
 - Firebase Realtime Database.
 - Firebase Storage.
 - Pixabay API.
+- UIKit.
