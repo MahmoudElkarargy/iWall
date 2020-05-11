@@ -120,7 +120,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                 else{
                     //User was created succesfully, now store the first and last name.
                     guard let uid = result?.user.uid else {
-                        print("Error: User isn't added")
+                        ShowAlert.show(title: "ERROR!", message: "User isn't added", controller: self)
                         return
                     }
                                         
@@ -135,7 +135,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                     UserData.uid = uid
                     userReference.updateChildValues(values) { (error, ref) in
                         if error != nil{
-                            print("Error \(error)")
+                            ShowAlert.show(title: "ERROR!", message: "\(error)", controller: self)
                         }                       
                     }
                     //Save the email and password!

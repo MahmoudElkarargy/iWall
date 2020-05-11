@@ -132,7 +132,7 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //Downloading and display image from storage.
         Storage.storage().reference(forURL: UserData.photosStorageURL[indexPath.row]).getData(maxSize: INT64_MAX) { (data, error) in
             guard error == nil else{
-                print("Error downloading! \(error)")
+                ShowAlert.show(title: "ERROR!", message: "\(error?.localizedDescription)", controller: self)
                 return
             }
             //Check if the cell still on screen, if so, update it!

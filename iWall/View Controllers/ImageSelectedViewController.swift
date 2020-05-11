@@ -100,7 +100,7 @@ class ImageSelectedViewController: UIViewController {
         desertRef.delete { error in
           if let error = error {
             // Uh-oh, an error occurred!
-            print("Error: \(error)")
+            ShowAlert.show(title: "ERROR!", message: "\(error.localizedDescription)", controller: self)
           } else {
             // File deleted successfully, delete it from array.
             UserData.photosID.remove(at: index)

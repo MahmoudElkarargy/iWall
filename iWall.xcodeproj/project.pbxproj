@@ -20,6 +20,7 @@
 		D6A043442467BA1E00299E59 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A043432467BA1E00299E59 /* UserData.swift */; };
 		D6B09AE02466600700220EFC /* IPhoneDevices..swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B09ADF2466600700220EFC /* IPhoneDevices..swift */; };
 		D6BAAC1C2468BF9800940922 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAAC1B2468BF9800940922 /* LikesCollectionViewCell.swift */; };
+		D6BAAC1E246914DF00940922 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAAC1D246914DE00940922 /* ShowAlert.swift */; };
 		D6C5D9B92464D7A7000BDC16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */; };
 		D6CA0DED2465D24000826D05 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CA0DEC2465D24000826D05 /* Client.swift */; };
 		D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD639C2464C62400F7823C /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		D6A043432467BA1E00299E59 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		D6B09ADF2466600700220EFC /* IPhoneDevices..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneDevices..swift; sourceTree = "<group>"; };
 		D6BAAC1B2468BF9800940922 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6BAAC1D246914DE00940922 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		D6C5D9B82464D7A7000BDC16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6CA0DEC2465D24000826D05 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		D6FD63992464C62400F7823C /* iWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 			children = (
 				D6FD63BA2464D27000F7823C /* Utilities.swift */,
 				D627D21A246514120085BF20 /* Constants.swift */,
+				D6BAAC1D246914DE00940922 /* ShowAlert.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				D6FD63A12464C62400F7823C /* FirstViewController.swift in Sources */,
 				D6B09AE02466600700220EFC /* IPhoneDevices..swift in Sources */,
+				D6BAAC1E246914DF00940922 /* ShowAlert.swift in Sources */,
 				D6828675246722D800CDCCB5 /* CollectionViewCell.swift in Sources */,
 				D6FD639D2464C62400F7823C /* AppDelegate.swift in Sources */,
 				D6FD63BB2464D27100F7823C /* Utilities.swift in Sources */,

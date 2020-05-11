@@ -75,7 +75,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 self.prepareForSearch()
             } else { self.activityIndicator.stopAnimating()}
             }) { (error) in
-                print(error.localizedDescription)
+                ShowAlert.show(title: "ERROR!", message: "\(error.localizedDescription)", controller: self)
             }
     }
     func startTimer(){
