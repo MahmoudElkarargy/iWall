@@ -43,3 +43,24 @@ iWall is following the MVC pattern.
   <img src="images/signupView.png">
 </p>
 
+## Home Screen
+### Device Select
+- If user first time launching the App, He must select a device in order to perfourm search.
+- If user already did a search before, He will found his device selcted as it's stored in Firebase Database.
+<p align="center">
+  <img src="images/selectedDev.png">
+</p>
+
+### Searching with tags
+- User can easily search for specific images.
+<p align="center">
+  <img src="images/yellow.png">
+</p>
+
+### Viewing image.
+- By tapping an image, a new view appears containg the image in a Higher Quality and it's label.
+- By tapping the like button (Heart), the user adds the image to his likes list.
+- By tapping share button, The user will be able to share image and download it.
+<p align="center">
+  <img src="images/liked.png">
+</p>
