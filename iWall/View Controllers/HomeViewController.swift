@@ -65,15 +65,16 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 let numberOfimages = (snapshot.childrenCount-3)/2
                 print("Acutal nb of image: \(numberOfimages)")
                 //delete all saved data before adding new.
-                UserData.photos.removeAll()
+                UserData.photosID.removeAll()
                 UserData.photosStorageURL.removeAll()
                 //Loop to add both Storage path and image url in the UserData.
                 for photos in 0...numberOfimages-1{
                     UserData.photosStorageURL.append(value?["photo\(photos)"] as? String ?? "")
                     print("User \(photos) photo storagePath: \(UserData.photosStorageURL[Int(photos)])")
                     
-                    UserData.photos.append(value?["photoURL\(photos)"] as? String ?? "")
-                    print("User \(photos) photo URL: \(UserData.photos[Int(photos)])")
+                    print(value?["photoURL\(photos)"])
+                    UserData.photosID.append(value?["photoURL\(photos)"] as? Int ?? 0)
+                    print("User \(photos) photo ID: \(UserData.photosID[Int(photos)])")
                     
                 }
             }
@@ -289,10 +290,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             //UnHide next button.
             self.nextButton.isHidden = false
         }
-        let imageURL = responseGlobal?.hits[indexPath.row].largeImageURL
-        print("Checking the url!: \(imageURL)")
-        print("Userd data... \( UserData.photos)")
-        if UserData.photos.contains(imageURL!){
+        let imageID = responseGlobal?.hits[indexPath.row].id
+        print("Checking the url!: \(imageID)")
+        print("Userd data... \( UserData.photosID)")
+        if UserData.photosID.contains(imageID!){
             //the user has liked this image.
             cell.loveImage.image = UIImage(named: "liked")!
         }else{
@@ -337,6 +338,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let imageSelectedView = segue.destination as! ImageSelectedViewController
             imageSelectedView.imageURL = responseGlobal?.hits[indexOfSelectedImage].largeImageURL
             imageSelectedView.labelText = responseGlobal?.hits[indexOfSelectedImage].tags
+            imageSelectedView.imageID = responseGlobal?.hits[indexOfSelectedImage].id
         }
     }
 }

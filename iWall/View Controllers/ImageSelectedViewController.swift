@@ -18,6 +18,7 @@ class ImageSelectedViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var shareButton: UIButton!
     var imageURL: String!
+    var imageID: Int!
     var labelText: String!
     var isfirstCliked = true
     var storageRef: StorageReference!
@@ -72,10 +73,11 @@ class ImageSelectedViewController: UIViewController {
             likedImage.setImage(UIImage(named: "love"), for: .normal)
             isfirstCliked = !isfirstCliked
             //Search for image.
-            let index = UserData.photos.firstIndex(of: imageURL)!
-            //Removing the liked image URL.
-            UserData.photos.remove(at: index)
-            print("Now liked images urls: \(UserData.photos)")
+            let index = UserData.photosID.firstIndex(of: imageID)!
+            print("I found it at index: \(index)")
+            //Removing the liked image URL and it's path from the storage.
+            deleteImage(index)
+//            UserData.photos.remove(at: index)
         }
     }
     
@@ -91,9 +93,12 @@ class ImageSelectedViewController: UIViewController {
             self.likedImage.isHidden = false
         }
     }
+    func deleteImage(_ index: Int){
+        
+    }
     func setLikeButton(){
-        print("imageURl: \(imageURL) and the list: \(UserData.photos)")
-        if UserData.photos.contains(imageURL){
+        print("imageID: \(imageID) and the list: \(UserData.photosID)")
+        if UserData.photosID.contains(imageID){
             likedImage.setImage(UIImage(named: "liked"), for: .normal)
             isfirstCliked = false
         }
@@ -123,16 +128,15 @@ class ImageSelectedViewController: UIViewController {
         storageRef!.child(imagePath).putData(photoData, metadata: metedata) { (metadata, error) in
             guard let error = error else {
                 //an error occurred!
-                print("ERROROROROORRO")
                 return
             }
         }
         //Add it to the dataBase.
-        numberOfSavedImages = UserData.photos.count
+        numberOfSavedImages = UserData.photosID.count
         print("yabaaaaaaaaaa\(numberOfSavedImages)")
         
         self.ref!.child("users/\(UserData.uid)/photo\(numberOfSavedImages)").setValue(self.storageRef!.child((metedata.path)!).description)
-        self.ref!.child("users/\(UserData.uid)/photoURL\(numberOfSavedImages)").setValue(imageURL)
+        self.ref!.child("users/\(UserData.uid)/photoURL\(numberOfSavedImages)").setValue(imageID)
         print("Check data Base!")
     }
 }

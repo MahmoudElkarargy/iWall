@@ -14,6 +14,6 @@ struct UserData {
     static var lastName = ""
     static var phoneDevice = ""
     static var uid = ""
-    static var photos = [String]()
+    static var photosID = [Int]()
     static var photosStorageURL = [String]()
 }

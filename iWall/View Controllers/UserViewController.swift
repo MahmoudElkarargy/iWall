@@ -64,7 +64,8 @@ class UserViewController: UIViewController, UITextFieldDelegate {
             UserData.lastName = ""
             UserData.phoneDevice = ""
             UserData.uid = ""
-            UserData.photos.removeAll()
+            UserData.photosID.removeAll()
+            UserData.photosStorageURL.removeAll()
             //return To First View.
             let firstViewController = self.storyboard?.instantiateViewController(identifier: Constants.StoryBoard.firstViewController)
             self.view.window?.rootViewController = firstViewController
@@ -110,7 +111,7 @@ class UserViewController: UIViewController, UITextFieldDelegate {
 //MARK: CollectionView extension.
 extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("UserData.photos.count: \(UserData.photos.count) and \(UserData.photosStorageURL.count)")
+        print("UserData.photos.count: \(UserData.photosID.count) and \(UserData.photosStorageURL.count)")
         return UserData.photosStorageURL.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
