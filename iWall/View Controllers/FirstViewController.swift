@@ -72,23 +72,18 @@ class FirstViewController: UIViewController {
     
     //check if the app has launched before.
     func checkFirstLaunch(){
-        print(UserDefaults.standard.bool(forKey: "isFirstLaunch"))
         let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         if !isFirstLaunch {
             //It's not the initial launch of application.
-            print("not first time")
             //Check if user already signed in?
             let email = UserDefaults.standard.string(forKey: "savedEmail")
-            print(email)
             if email != "" && email != nil{
                 //So, the user is already signed in, get the password and sign in.
                 let password = UserDefaults.standard.string(forKey: "savedPassword")
-                print(password)
                 //login
                 Auth.auth().signIn(withEmail: email!, password: password!) { (result, error) in
                     if error != nil{
                         //Couldn't sign in, delete the savedEmail and let the user sigin in manually
-                        print("can't sign in")
                         UserDefaults.standard.set("", forKey: "savedEmail")
                         self.checkFirstLaunch()
                     }
@@ -96,7 +91,6 @@ class FirstViewController: UIViewController {
                         //Save the user uid.
                         UserData.uid = result?.user.uid as! String
                         //Transition to the home screen.
-                        print("Signed in!")
                         self.TransitionToHome()
                     }
                 }
@@ -120,9 +114,5 @@ class FirstViewController: UIViewController {
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoard.homeViewController)
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
-    }
-    
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        print("hi?")
     }
 }

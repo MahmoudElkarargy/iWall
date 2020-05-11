@@ -20,12 +20,19 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var ref: DatabaseReference?
     
     //MARK: Override funcs.
     override func viewDidLoad() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        //Bring the activityIndicator in the front!
+        self.view.bringSubviewToFront(activityIndicator)
+        //Start animating.
+        if UserData.photosStorageURL.count > 0 {
+            self.activityIndicator.startAnimating()
+        }
         //instance of FIRDatabaseReference.
         ref = Database.database().reference()
         super.viewDidLoad()
@@ -36,6 +43,9 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         updateUserName(textField)
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateUserName(textField)
     }
     //MARK: Setup funcs.
     func setUpElments(){
@@ -111,7 +121,7 @@ class UserViewController: UIViewController, UITextFieldDelegate {
 //MARK: CollectionView extension.
 extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("UserData.photos.count: \(UserData.photosID.count) and \(UserData.photosStorageURL.count)")
+        likesLabel.text = "\(UserData.photosStorageURL.count) liked image."
         return UserData.photosStorageURL.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -119,7 +129,6 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //Setting up the cell.
         cell.imageView.image = UIImage(named: "placeholderImage")!
         
-        print("index tmam? \(indexPath.row)")
         //Downloading and display image from storage.
         Storage.storage().reference(forURL: UserData.photosStorageURL[indexPath.row]).getData(maxSize: INT64_MAX) { (data, error) in
             guard error == nil else{
@@ -132,14 +141,13 @@ extension UserViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     //Display image.
                     cell.imageView.image = UIImage(data: data!)
                     cell.setNeedsLayout()
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
-        
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 10
         return cell
     }
-    
 }

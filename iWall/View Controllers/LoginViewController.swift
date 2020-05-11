@@ -46,7 +46,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: Setup funcs.
     func configureAuth(){
         _authHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("when did I call?")
             //check if there's a current user.
             if let activeUser = user{
                 //Check if the current app user is the FIRUser.
@@ -117,7 +116,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             else{
                 //Save the user uid.
                 UserData.uid = result?.user.uid as! String
-                print("User uid: \(UserData.uid)")
                 //Save the email and password!
                 UserDefaults.standard.set(email, forKey: "savedEmail")
                 UserDefaults.standard.set(password, forKey: "savedPassword")

@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var prevButton: UIButton!
     var ref: DatabaseReference?
     var numberOfImagesToBeLoaded: Int = 0
     var totalnumberOfPages: Int = 1
@@ -36,8 +37,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         self.view.bringSubviewToFront(activityIndicator)
         //Start animating.
         self.activityIndicator.startAnimating()
-        //Hide next button.
+        //Hide next and prev button.
         nextButton.isHidden = true
+        prevButton.isHidden = true
         addDatabaseListener()
         startTimer()
         setUpElments()
@@ -47,43 +49,30 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         ref = Database.database().reference()
         //Add listner.
         ref?.child("users").child(UserData.uid).observe(.value, with: { (snapshot) in
-            
-            print("snapShot: \(snapshot)")
             // Get user value
             let value = snapshot.value as? NSDictionary
-            
             UserData.firstName = value?["firstName"] as? String ?? ""
             UserData.lastName = value?["lastName"] as? String ?? ""
             UserData.phoneDevice = value?["deviceType"] as? String ?? ""
-            print("Now user is: \(UserData.firstName) \(UserData.lastName) and his device: \(UserData.phoneDevice)")
-            
             //Check if there's photo saved, by counting number of childs.
-            print("now child: \(snapshot.childrenCount)")
             //make sure it's trigged after adding the store path and URL
             if snapshot.childrenCount > 3 && snapshot.childrenCount % 2 != 0 {
                 //sub. the first 3 child's and then divide by 2.
                 let numberOfimages = (snapshot.childrenCount-3)/2
-                print("Acutal nb of image: \(numberOfimages)")
                 //delete all saved data before adding new.
                 UserData.photosID.removeAll()
                 UserData.photosStorageURL.removeAll()
                 //Loop to add both Storage path and image url in the UserData.
                 for photos in 0...numberOfimages-1{
                     UserData.photosStorageURL.append(value?["photo\(photos)"] as? String ?? "")
-                    print("User \(photos) photo storagePath: \(UserData.photosStorageURL[Int(photos)])")
-                    
-                    print(value?["photoURL\(photos)"])
                     UserData.photosID.append(value?["photoURL\(photos)"] as? Int ?? 0)
-                    print("User \(photos) photo ID: \(UserData.photosID[Int(photos)])")
-                    
                 }
             }
             //Set the device.
             self.setUpSelectedDevice()
             if UserData.phoneDevice != ""{
                 //Search Automatically for user.
-                Client.getPhotosSearchResult(tag: "Wallpaper", minWidth: IPhoneDevices.returnMinWidth(device: UserData.phoneDevice), minHeight: IPhoneDevices.returnMinHeight(device: UserData.phoneDevice),page: self.numberOfPage, completionHandler:
-                self.handleImagesSearchResponse(response:error:))
+                self.prepareForSearch()
             } else { self.activityIndicator.stopAnimating()}
             }) { (error) in
                 print(error.localizedDescription)
@@ -102,6 +91,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         //if return is pressed resign first responder to hide keyboard
         textField.resignFirstResponder()
         //Search when return pressed.
+        numberOfPage = 1
         prepareForSearch()
         return true
     }
@@ -178,7 +168,6 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
                 let tagString = tagTextField.text!.replacingOccurrences(of: " ", with: "+")
                 //Search with tag!
                 targetStriing = targetStriing + "+" + tagString
-                print(targetStriing)
             }
             //Search for imgs.
             Client.getPhotosSearchResult(tag: targetStriing, minWidth: IPhoneDevices.returnMinWidth(device: typeTextField.text!), minHeight: IPhoneDevices.returnMinHeight(device: typeTextField.text!), page: self.numberOfPage, completionHandler:
@@ -203,7 +192,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
             return
         }
         activityIndicator.startAnimating()
-        //Hide next button.
+        //Hide next and prev button.
         nextButton.isHidden = true
         //Everthing is good to go!
         responseGlobal = response
@@ -230,11 +219,28 @@ class HomeViewController: UIViewController, UITextFieldDelegate{
         if numberOfPage < totalnumberOfPages{
             //increment to search again.
             numberOfPage = numberOfPage + 1
+            if numberOfPage == 2{
+                prevButton.isHidden = false
+            }
             //Search for imgs.
             prepareForSearch()
         }
         else {
             nextButton.isHidden = true
+        }
+    }
+    @IBAction func prevButtonTapped(_ sender: Any) {
+        if numberOfPage > 1{
+            //increment to search again.
+            numberOfPage = numberOfPage - 1
+            if numberOfPage == totalnumberOfPages-1{
+                nextButton.isHidden = false
+            }
+            //Search for imgs.
+            prepareForSearch()
+        }
+        else{
+            prevButton.isHidden = true
         }
     }
 }
@@ -255,6 +261,8 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         typeTextField.text = IPhoneDevices.devices[row]
         //Update the dataBase with the user new device.
         self.ref!.child("users/\(UserData.uid)/deviceType").setValue(IPhoneDevices.devices[row])
+        numberOfPage = 1
+        prepareForSearch()
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         //Customize the pickerView texts.
@@ -287,12 +295,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageview.image = image
             //stop the animating
             self.activityIndicator.stopAnimating()
-            //UnHide next button.
+            //UnHide next and prev button.
             self.nextButton.isHidden = false
         }
         let imageID = responseGlobal?.hits[indexPath.row].id
-        print("Checking the url!: \(imageID)")
-        print("Userd data... \( UserData.photosID)")
         if UserData.photosID.contains(imageID!){
             //the user has liked this image.
             cell.loveImage.image = UIImage(named: "liked")!

@@ -28,7 +28,6 @@ class Client{
             }
         }
         var url: URL {
-//            print("URL: \(stringValue)")
             return URL(string: stringValue)!
         }
     }
@@ -46,11 +45,9 @@ class Client{
                     return
                 }
                 do {
-                    print(String(data: data, encoding: .utf8)!)
                     let decoder = JSONDecoder()
                     let responseObject = try decoder.decode(ImagesSearchResponse.self, from: data)
                     DispatchQueue.main.async {
-                        print("Response is succeful")
                             completionHandler(responseObject, nil)
                         }
                     } catch {

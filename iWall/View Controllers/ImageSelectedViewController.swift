@@ -24,7 +24,7 @@ class ImageSelectedViewController: UIViewController {
     var storageRef: StorageReference!
     var ref: DatabaseReference?
     var numberOfSavedImages: Int = 0
-    
+    var storagePath: String = ""
     //MARK: Override functions.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,6 @@ class ImageSelectedViewController: UIViewController {
     }
     //MARK: IBAction func.
     @IBAction func backButtonTapped(_ sender: Any) {
-        print("eshm3naaa???")
         HomeViewController.calledFromImageSelectedView()
         self.dismiss(animated: true)
     }
@@ -74,10 +73,8 @@ class ImageSelectedViewController: UIViewController {
             isfirstCliked = !isfirstCliked
             //Search for image.
             let index = UserData.photosID.firstIndex(of: imageID)!
-            print("I found it at index: \(index)")
             //Removing the liked image URL and it's path from the storage.
             deleteImage(index)
-//            UserData.photos.remove(at: index)
         }
     }
     
@@ -94,10 +91,35 @@ class ImageSelectedViewController: UIViewController {
         }
     }
     func deleteImage(_ index: Int){
-        
+        //Remove it from Storage
+        // Create a reference to the file to delete
+        var path = UserData.photosStorageURL[index]
+        //27 to remove "gs://iwall-5521.appspot.com"
+        let desertRef = storageRef.child(path[27...])
+        // Delete the file
+        desertRef.delete { error in
+          if let error = error {
+            // Uh-oh, an error occurred!
+            print("Error: \(error)")
+          } else {
+            // File deleted successfully, delete it from array.
+            UserData.photosID.remove(at: index)
+            UserData.photosStorageURL.remove(at: index)
+            //Remove all photos from data base and then add them agian to be sure of their indexs.
+            for image in 0...UserData.photosStorageURL.count{
+                //Remove it from database.
+                Database.database().reference().child("users").child(UserData.uid).child("photo\(image)").removeValue()
+                Database.database().reference().child("users").child(UserData.uid).child("photoURL\(image)").removeValue()
+            }
+            //Add them agian manually.
+            for image in 0...UserData.photosStorageURL.count-1{
+                self.ref!.child("users/\(UserData.uid)/photo\(image)").setValue(UserData.photosStorageURL[image])
+                self.ref!.child("users/\(UserData.uid)/photoURL\(image)").setValue(UserData.photosID[image])
+            }
+          }
+        }
     }
     func setLikeButton(){
-        print("imageID: \(imageID) and the list: \(UserData.photosID)")
         if UserData.photosID.contains(imageID){
             likedImage.setImage(UIImage(named: "liked"), for: .normal)
             isfirstCliked = false
@@ -131,12 +153,24 @@ class ImageSelectedViewController: UIViewController {
                 return
             }
         }
+        storagePath = self.storageRef!.child((metedata.path)!).description
         //Add it to the dataBase.
         numberOfSavedImages = UserData.photosID.count
-        print("yabaaaaaaaaaa\(numberOfSavedImages)")
-        
-        self.ref!.child("users/\(UserData.uid)/photo\(numberOfSavedImages)").setValue(self.storageRef!.child((metedata.path)!).description)
+        self.ref!.child("users/\(UserData.uid)/photo\(numberOfSavedImages)").setValue(storagePath)
         self.ref!.child("users/\(UserData.uid)/photoURL\(numberOfSavedImages)").setValue(imageID)
-        print("Check data Base!")
+    }
+}
+
+extension String {
+    subscript(_ range: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let end = index(start, offsetBy: min(self.count - range.lowerBound,
+                                             range.upperBound - range.lowerBound))
+        return String(self[start..<end])
+    }
+
+    subscript(_ range: CountablePartialRangeFrom<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+         return String(self[start...])
     }
 }

@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("not first")
             UserDefaults.standard.synchronize()
         } else{
-//            UserDefaults.standard.set(true, forKey: "isFirstLaunch")
             print("first launch")
         }
         return true

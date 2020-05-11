@@ -133,7 +133,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
                     UserData.lastName = lastName
                     UserData.phoneDevice = ""
                     UserData.uid = uid
-                    print("New User added to the data base: \(UserData.firstName) \(UserData.lastName) and uid: \(UserData.uid)")
                     userReference.updateChildValues(values) { (error, ref) in
                         if error != nil{
                             print("Error \(error)")
@@ -170,7 +169,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         let isValidPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if Utilities.isPasswordValid(isValidPassword) == false{
             //Password isn't secure enough.
-            return "Please make sure your password is at least 8 charcters, contains a special charcter and a number."
+            return "Please make sure your password is at least 6 charcters, contains a special charcter and a number."
         }
         //Indicating that nothing went wrong.
         return nil
