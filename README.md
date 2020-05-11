@@ -64,3 +64,32 @@ iWall is following the MVC pattern.
 <p align="center">
   <img src="images/liked.png">
 </p>
+
+## Likes List Screen
+- User can see all of his likes by tapping on the user icon.
+- All liked images are stored in Firebase Storage. So, whenever a user login in any device anywhere he will found all his data saved and secured.
+- Also, By tapping the like button agian the image will be unlicked and will be removed from Firebase Storage.
+<p align="center">
+  <img src="images/listLikes.png">
+</p>
+
+### User info.
+- User can also modify his first and last name using Firebase real time database.
+<p align="center">
+  <img src="images/favList.png">
+</p>
+
+## Persistent State.
+- The App saves the user's data (email, password, device). So, when he re-launched the App this view will appear as it's automatically logging him to the account and Firebase server.
+- The Main view won't appear as the user isn't asked to signin or signup, if there's a failed network connection the user will be re-moved to the Main View.
+- After loggin, The User will be directed back to his Home view.
+- Once oppening, the user data will be fetched from the Firebase database. So, the user will found his liked images and his name saved.
+<p align="center">
+  <img src="images/AutomaticLogin.png">
+</p>
+
+# Dependencies:
+- Firebase Authentication.
+- Firebase Realtime Database.
+- Firebase Storage.
+- Pixabay API.
