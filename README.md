@@ -16,3 +16,30 @@ Also, adding photos to his like list, share it and save it!
 * Using NSCache to reduce the need to download reused data.
 
 ## App Structure
+iWall is following the MVC pattern.
+<p align="center">
+  <img src="images/mvc.png">
+</p>
+
+## Main Screen
+- Allows the user to choose between Login or Sign Up. It’s animated with a background video.
+<p align="center">
+  <img src="images/MainView.png">
+</p>
+
+## Login Screen
+- Allows the user to log in using their email and password. 
+- Authenticate is done through Firebase Authenticate. 
+- If the login does not succeed, an alert is presented specifying whether it was a failed network connection, or an incorrect email and password. Also, It’s animated with a background video. 
+<p align="center">
+  <img src="images/login.png">
+</p>
+
+## Sign up Screen
+- Gives users the ability to sign up with email and password, Pick his first and last name. 
+- If the email is already regiestered with another account an alert is displayed.
+- Email and password validation is added where password must be at least 6 charcters, contains a special character and a number. It’s also animated with a background video.
+<p align="center">
+  <img src="images/signupView.png">
+</p>
+
