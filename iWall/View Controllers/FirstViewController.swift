@@ -10,7 +10,9 @@ import UIKit
 import ARKit
 import FirebaseAuth
 
+
 class FirstViewController: UIViewController {
+    
     //MARK: Outlets and variables.
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -22,21 +24,24 @@ class FirstViewController: UIViewController {
     private var player: AVQueuePlayer?
     
     //MARK: Override funcs.
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     override func viewWillAppear(_ animated: Bool) {
+        
         loggingScreen()
         checkFirstLaunch()
     }
+    
     //MARK: Setup funcs.
     func loggingScreen(){
+        
         //Hide login and signup buttons, untill checking for saved email.
         signUpButton.isHidden = true
         loginButton.isHidden = true
         activityIndicator.startAnimating()
+        
     }
+    
     func setUpElments(){
+        
         //No saved emails. So,Unhide buttons
         signUpButton.isHidden = false
         loginButton.isHidden = false
